@@ -4,10 +4,11 @@ type: dataset
 authors:
   - family-names: Cascudo García-Villaraco
     given-names: Teresa
-    orcid: "https://orcid.org/[your-orcid]"
+    orcid: "https://orcid.org/0000-0002-8926-068X"
     affiliation: "Universidad de La Rioja / SCRIUR"
   - family-names: de las Casas Escolar
     given-names: Arturo
+    orcid: https://orcid.org/0000-0001-9803-6586
     affiliation: "Universidad de La Rioja / SCRIUR"
 title: "LexiMus-UR: Melcior 1859 chord ontology model"
 version: 1.0.0
