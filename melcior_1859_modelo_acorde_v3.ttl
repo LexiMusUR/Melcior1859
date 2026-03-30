@@ -1,0 +1,2309 @@
+@prefix : <http://leximus.es/source/melcior1859/acorde-v3#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix cidoc: <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix leximus: <http://leximus.es/ontology#> .
+@prefix melcior: <http://leximus.es/source/melcior1859#> .
+@prefix ontolex: <http://www.w3.org/ns/lemon/ontolex#> .
+@base <http://leximus.es/source/melcior1859/acorde-v3> .
+
+<http://leximus.es/source/melcior1859/acorde-v3> rdf:type owl:Ontology ;
+                                                  rdfs:comment "Reconstruccion ontologica del concepto de acorde y su entorno conceptual a partir del Diccionario enciclopedico de la musica (Melcior, 1859). v3 amplia el modelo con clases emergentes del analisis proposicional."@es ;
+                                                  rdfs:label "Modelo de ACORDE — Melcior 1859 (v3)"@es ;
+                                                  dcterms:creator "Teresa Cascudo Garcia-Villaraco (Universidad de La Rioja / SCRIUR)" ;
+                                                  dcterms:creator "Arturo de las Casas Escolar (Universidad de La Rioja / SCRIUR)" ;
+                                                  dcterms:rights "CC BY 4.0 — https://creativecommons.org/licenses/by/4.0/" ;
+                                                  dcterms:isPartOf "Proyecto LexiMus PID2022-139589NB-C32, MCIN/AEI/10.13039/501100011033/FEDER, UE" ;
+                                                  prov:wasDerivedFrom "Melcior, C. J. (1859). Diccionario enciclopedico de la musica"@es ;
+                                                  prov:wasGeneratedBy <http://leximus.es/project/sp2> .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://leximus.es/ontology#nivelEvidencia
+leximus:nivelEvidencia rdf:type owl:AnnotationProperty ;
+                        rdfs:comment "TEXTUAL (la fuente lo dice), INFERENCIA (anadido por el analista), HERENCIA (de clase padre)."@es ;
+                        rdfs:label "nivel de evidencia"@es .
+
+
+###  http://www.cidoc-crm.org/cidoc-crm/P67_refers_to
+cidoc:P67_refers_to rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#altLabel
+skos:altLabel rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#closeMatch
+skos:closeMatch rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#definition
+skos:definition rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#example
+skos:example rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/2004/02/skos/core#related
+skos:related rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/lemon/ontolex#canonicalForm
+ontolex:canonicalForm rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/lemon/ontolex#reference
+ontolex:reference rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/lemon/ontolex#sense
+ontolex:sense rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/lemon/ontolex#writtenRep
+ontolex:writtenRep rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/prov#wasDerivedFrom
+prov:wasDerivedFrom rdf:type owl:AnnotationProperty .
+
+
+###  http://www.w3.org/ns/prov#wasGeneratedBy
+prov:wasGeneratedBy rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://leximus.es/ontology#contieneTipo
+leximus:contieneTipo rdf:type owl:ObjectProperty ;
+                     rdfs:comment "Una clasificacion contiene un tipo como miembro."@es ;
+                     rdfs:label "contiene tipo"@es .
+
+
+###  http://leximus.es/ontology#cualidadAtribuida
+leximus:cualidadAtribuida rdf:type owl:ObjectProperty ;
+                          rdfs:domain melcior:ValoracionEstetica ;
+                          rdfs:range melcior:CualidadPerceptiva ;
+                          rdfs:label "cualidad atribuida"@es .
+
+
+###  http://leximus.es/ontology#ejecuta
+leximus:ejecuta rdf:type owl:ObjectProperty ;
+                rdfs:domain melcior:Parte ;
+                rdfs:range melcior:Nota ;
+                rdfs:comment "La parte ejecuta (toca/canta) notas. Relacion agentiva: la parte produce la nota en la partitura."@es ;
+                rdfs:label "ejecuta"@es .
+
+
+###  http://leximus.es/ontology#esAdoptadaPor
+leximus:esAdoptadaPor rdf:type owl:ObjectProperty ;
+                      rdfs:domain cidoc:E89_Propositional_Object ;
+                      rdfs:range prov:Agent ;
+                      rdfs:comment "El autor que adopta/acepta la proposicion en su texto."@es ;
+                      rdfs:label "es adoptada por"@es .
+
+
+###  http://leximus.es/ontology#esAlteracionDe
+leximus:esAlteracionDe rdf:type owl:ObjectProperty ;
+                       rdfs:comment "Relacion entre un acorde alterado y el acorde primitivo del que procede."@es ;
+                       rdfs:label "es alteracion de"@es .
+
+
+###  http://leximus.es/ontology#esAplicacionDe
+leximus:esAplicacionDe rdf:type owl:ObjectProperty ;
+                       rdfs:comment "Conecta un evento en partitura (E7) con la regla del diccionario (E29) que instancia. Capa futura."@es ;
+                       rdfs:label "es aplicacion de"@es .
+
+
+###  http://leximus.es/ontology#esAtribuidaA
+leximus:esAtribuidaA rdf:type owl:ObjectProperty ;
+                     rdfs:domain cidoc:E89_Propositional_Object ;
+                     rdfs:range prov:Agent ;
+                     rdfs:comment "El autor al que se atribuye la proposicion (no necesariamente quien la escribe)."@es ;
+                     rdfs:label "es atribuida a"@es .
+
+
+###  http://leximus.es/ontology#tienePorObjeto
+leximus:tienePorObjeto rdf:type owl:ObjectProperty ;
+                      rdfs:label "es la ciencia de"@es .
+
+
+###  http://leximus.es/ontology#esRechazadaPor
+leximus:esRechazadaPor rdf:type owl:ObjectProperty ;
+                       rdfs:domain cidoc:E89_Propositional_Object ;
+                       rdfs:range prov:Agent ;
+                       rdfs:comment "El autor que explicitamente rechaza la proposicion."@es ;
+                       rdfs:label "es rechazada por"@es .
+
+
+###  http://leximus.es/ontology#esUnMecanismoDe
+leximus:esUnMecanismoDe rdf:type owl:ObjectProperty ;
+                        rdfs:comment "Relacion entre una regla/procedimiento especifico y el fenomeno mas amplio que produce."@es ;
+                        rdfs:label "es un mecanismo de"@es .
+
+
+###  http://leximus.es/ontology#forma
+leximus:forma rdf:type owl:ObjectProperty ;
+              rdfs:domain melcior:Nota ;
+              rdfs:range melcior:Acorde ;
+              rdfs:comment "Relacion resultativa: las notas simultaneas forman un acorde. El acorde es resultado, no premisa."@es ;
+              rdfs:label "forma"@es .
+
+
+###  http://leximus.es/ontology#gobernadoPor
+leximus:gobernadoPor rdf:type owl:ObjectProperty ;
+                     rdfs:domain melcior:MovimientoArmonico ;
+                     rdfs:range melcior:ReglaArmonica ;
+                     rdfs:comment "El movimiento de las partes esta gobernado por reglas armonicas."@es ;
+                     rdfs:label "gobernado por"@es .
+
+
+###  http://leximus.es/ontology#identificaAplicacionDe
+leximus:identificaAplicacionDe rdf:type owl:ObjectProperty ;
+                               rdfs:comment "Conecta un claim analitico (E89) con el evento en partitura (E7) sobre el que se pronuncia. Capa futura."@es ;
+                               rdfs:label "identifica aplicacion de"@es .
+
+
+###  http://leximus.es/ontology#opuestoDe
+leximus:opuestoDe rdf:type owl:ObjectProperty ,
+                           owl:SymmetricProperty ;
+                  rdfs:label "opuesto de"@es .
+
+
+###  http://leximus.es/ontology#permiteProceso
+leximus:permiteProceso rdf:type owl:ObjectProperty ;
+                       rdfs:label "permite proceso"@es .
+
+
+###  http://leximus.es/ontology#precede
+leximus:precede rdf:type owl:ObjectProperty ,
+                         owl:TransitiveProperty ;
+                rdfs:comment "Orden secuencial dentro de un procedimiento."@es ;
+                rdfs:label "precede"@es .
+
+
+###  http://leximus.es/ontology#produceEnlace
+leximus:produceEnlace rdf:type owl:ObjectProperty ;
+                      rdfs:domain melcior:MovimientoArmonico ;
+                      rdfs:range melcior:EnlaceArmonico ;
+                      rdfs:comment "El movimiento correcto de las partes produce el enlace armonico entre acordes."@es ;
+                      rdfs:label "produce enlace"@es .
+
+
+###  http://leximus.es/ontology#seDerivaDe
+leximus:seDerivaDe rdf:type owl:ObjectProperty ;
+                   rdfs:comment "Relacion genetica: un acorde deriva de otro por adicion de intervalo."@es ;
+                   rdfs:label "se deriva de"@es .
+
+
+###  http://leximus.es/ontology#seMueveSegun
+leximus:seMueveSegun rdf:type owl:ObjectProperty ;
+                     rdfs:domain melcior:Parte ;
+                     rdfs:range melcior:MovimientoArmonico ;
+                     rdfs:comment "La parte se mueve de un acorde al siguiente segun un tipo de movimiento (contrario, semejante, oblicuo)."@es ;
+                     rdfs:label "se mueve segun"@es .
+
+
+###  http://leximus.es/ontology#seResuelveEn
+leximus:seResuelveEn rdf:type owl:ObjectProperty ;
+                     rdfs:domain melcior:AcordeDisonante ;
+                     rdfs:comment "Todo acorde disonante se resuelve por 5.a inferior o 4.a superior."@es ;
+                     rdfs:label "se resuelve en"@es .
+
+
+###  http://leximus.es/ontology#sujetoARegla
+leximus:sujetoARegla rdf:type owl:ObjectProperty ;
+                     rdfs:comment "La entidad musical esta sujeta a las restricciones de una regla armonica (E29)."@es ;
+                     rdfs:label "sujeto a regla"@es .
+
+
+###  http://leximus.es/ontology#sujetoDeValoracion
+leximus:sujetoDeValoracion rdf:type owl:ObjectProperty ;
+                           rdfs:domain melcior:ValoracionEstetica ;
+                           rdfs:comment "La entidad musical evaluada (un tipo de acorde, un intervalo, una combinacion)."@es ;
+                           rdfs:label "sujeto de valoracion"@es .
+
+
+###  http://leximus.es/ontology#tieneComponente
+leximus:tieneComponente rdf:type owl:ObjectProperty ;
+                        rdfs:comment "Relacion parte-todo: una estructura musical contiene un componente constitutivo."@es ;
+                        rdfs:label "tiene componente"@es .
+
+
+###  http://leximus.es/ontology#tienePropiedad
+leximus:tienePropiedad rdf:type owl:ObjectProperty ;
+                       rdfs:comment "Relacion entre una clase musical y una cualidad que le es constitutiva."@es ;
+                       rdfs:label "tiene propiedad"@es .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://leximus.es/ontology#sinEntradaPropia
+leximus:sinEntradaPropia rdf:type owl:DatatypeProperty ;
+                             rdfs:range xsd:boolean ;
+                             rdfs:comment "true cuando el concepto es usado como constitutivo pero no tiene entrada definitoria en este diccionario. Marca un hueco que otro diccionario del corpus puede llenar."@es ;
+                             rdfs:label "sin entrada propia"@es .
+
+
+###  http://leximus.es/ontology#causa
+leximus:causa rdf:type owl:DatatypeProperty ;
+              rdfs:range rdfs:Literal ;
+              rdfs:comment "Causa o fundamento que Melcior atribuye a una propiedad o fenomeno."@es ;
+              rdfs:label "causa"@es .
+
+
+###  http://leximus.es/ontology#condicion
+leximus:condicion rdf:type owl:DatatypeProperty ;
+                  rdfs:domain melcior:ValoracionEstetica ;
+                  rdfs:range rdfs:Literal ;
+                  rdfs:comment "Condicion bajo la cual se aplica la cualidad. Vacio = inherente; presente = condicional."@es ;
+                  rdfs:label "condicion"@es .
+
+
+###  http://leximus.es/ontology#determinaModo
+leximus:determinaModo rdf:type owl:DatatypeProperty ;
+                      rdfs:domain melcior:AcordeConsonante ;
+                      rdfs:range rdfs:Literal ;
+                      rdfs:label "determina modo"@es .
+
+
+###  http://leximus.es/ontology#fuenteEntry
+leximus:fuenteEntry rdf:type owl:DatatypeProperty ;
+                    rdfs:range rdfs:Literal ;
+                    rdfs:comment "xml:id de la entrada TEI de la que se extrae la informacion (e.g. 'melcior_1859_acorde')."@es ;
+                    rdfs:label "entrada fuente"@es .
+
+
+###  http://leximus.es/ontology#necesitaPreparacion
+leximus:necesitaPreparacion rdf:type owl:DatatypeProperty ;
+                            rdfs:range xsd:boolean ;
+                            rdfs:label "necesita preparacion"@es .
+
+
+###  http://leximus.es/ontology#ordenEnClasificacion
+leximus:ordenEnClasificacion rdf:type owl:DatatypeProperty ;
+                             rdfs:range xsd:integer ;
+                             rdfs:comment "Numero de orden que Melcior/Reicha asignan al acorde disonante."@es ;
+                             rdfs:label "orden en clasificacion"@es .
+
+
+###  http://leximus.es/ontology#ordenEnProcedimiento
+leximus:ordenEnProcedimiento rdf:type owl:DatatypeProperty ;
+                             rdfs:range xsd:integer ;
+                             rdfs:label "orden en procedimiento"@es .
+
+
+###  http://leximus.es/ontology#polaridad
+leximus:polaridad rdf:type owl:DatatypeProperty ;
+                  rdfs:range rdfs:Literal ;
+                  rdfs:comment "Orientacion valorativa: positiva, negativa o neutra."@es ;
+                  rdfs:label "polaridad"@es .
+
+
+###  http://leximus.es/ontology#seCompone
+leximus:seCompone rdf:type owl:DatatypeProperty ;
+                  rdfs:range rdfs:Literal ;
+                  rdfs:comment "Descripcion de la estructura intervalica del acorde."@es ;
+                  rdfs:label "se compone de"@es .
+
+
+###  http://leximus.es/ontology#patronPredicativo
+leximus:patronPredicativo rdf:type owl:DatatypeProperty ;
+                          rdfs:range rdfs:Literal ;
+                          rdfs:comment "INHERENTE (propiedad estable del tipo), CONDICIONAL (depende del manejo), RELACIONAL (depende de la mezcla)."@es ;
+                          rdfs:label "patron predicativo"@es .
+
+
+###  http://leximus.es/ontology#valoracionDelAutor
+leximus:valoracionDelAutor rdf:type owl:DatatypeProperty ;
+                           rdfs:range rdfs:Literal ;
+                           rdfs:comment "Juicio explicito del autor del diccionario sobre la proposicion citada."@es ;
+                           rdfs:label "valoracion del autor"@es .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://leximus.es/source/melcior1859#Acorde
+melcior:Acorde rdf:type owl:Class ;
+               rdfs:subClassOf cidoc:E73_Information_Object .
+
+
+###  http://leximus.es/source/melcior1859#Acorde4aAumentada
+melcior:Acorde4aAumentada rdf:type owl:Class ;
+                          rdfs:subClassOf melcior:AcordeDisonanteAlterado ;
+                          rdfs:label "acorde de 4.a aumentada"@es ;
+                          skos:definition "7.a dominante con 5.a bajada en el bajo"@es ;
+                          skos:example "Reb-Fa-Sol-Si"@es .
+
+
+###  http://leximus.es/source/melcior1859#Acorde5aAumentadaCon7a
+melcior:Acorde5aAumentadaCon7a rdf:type owl:Class ;
+                               rdfs:subClassOf melcior:AcordeDisonanteAlterado ;
+                               rdfs:label "acorde de 5.a aumentada con 7.a"@es ;
+                               skos:definition "7.a dominante con 5.a subida"@es ;
+                               skos:example "Sol-Fa-Si-Re#"@es .
+
+
+###  http://leximus.es/source/melcior1859#Acorde6aAumentada
+melcior:Acorde6aAumentada rdf:type owl:Class ;
+                          rdfs:subClassOf melcior:AcordeDisonanteAlterado .
+
+
+###  http://leximus.es/source/melcior1859#AcordeAlteradoAscendente
+melcior:AcordeAlteradoAscendente rdf:type owl:Class ;
+                                 rdfs:subClassOf melcior:AcordeDisonanteAlterado ;
+                                 rdfs:label "acorde alterado ascendente"@es ;
+                                 skos:definition "acorde cuya 5.a ha subido un semitono"@es .
+
+
+###  http://leximus.es/source/melcior1859#AcordeAlteradoDescendente
+melcior:AcordeAlteradoDescendente rdf:type owl:Class ;
+                                  rdfs:subClassOf melcior:AcordeDisonanteAlterado ;
+                                  rdfs:label "acorde alterado descendente"@es ;
+                                  skos:definition "acorde cuya 5.a ha bajado un semitono"@es .
+
+
+###  http://leximus.es/source/melcior1859#AcordeCompleto
+melcior:AcordeCompleto rdf:type owl:Class ;
+                       rdfs:subClassOf melcior:Acorde .
+
+
+###  http://leximus.es/source/melcior1859#AcordeConsonante
+melcior:AcordeConsonante rdf:type owl:Class ;
+                         owl:equivalentClass melcior:Triada ;
+                         rdfs:subClassOf melcior:Acorde .
+
+
+###  http://leximus.es/source/melcior1859#AcordeDiminuto
+melcior:AcordeDiminuto rdf:type owl:Class ;
+                       rdfs:subClassOf melcior:AcordeDisonantePrimitivo .
+
+
+###  http://leximus.es/source/melcior1859#AcordeDirecto
+melcior:AcordeDirecto rdf:type owl:Class ;
+                      rdfs:subClassOf melcior:Acorde .
+
+
+###  http://leximus.es/source/melcior1859#AcordeDisonante
+melcior:AcordeDisonante rdf:type owl:Class ;
+                        rdfs:subClassOf melcior:Acorde .
+
+
+###  http://leximus.es/source/melcior1859#AcordeDisonanteAlterado
+melcior:AcordeDisonanteAlterado rdf:type owl:Class ;
+                                rdfs:subClassOf melcior:AcordeDisonante .
+
+
+###  http://leximus.es/source/melcior1859#AcordeDisonantePrimitivo
+melcior:AcordeDisonantePrimitivo rdf:type owl:Class ;
+                                 rdfs:subClassOf melcior:AcordeDisonante .
+
+
+###  http://leximus.es/source/melcior1859#AcordeImperfecto
+melcior:AcordeImperfecto rdf:type owl:Class ;
+                         rdfs:subClassOf melcior:Acorde .
+
+
+###  http://leximus.es/source/melcior1859#AcordeInvertido
+melcior:AcordeInvertido rdf:type owl:Class ;
+                        rdfs:subClassOf melcior:Acorde .
+
+
+###  http://leximus.es/source/melcior1859#AcordePerfectoMayor
+melcior:AcordePerfectoMayor rdf:type owl:Class ;
+                            rdfs:subClassOf melcior:AcordeConsonante .
+
+
+###  http://leximus.es/source/melcior1859#AcordePerfectoMenor
+melcior:AcordePerfectoMenor rdf:type owl:Class ;
+                            rdfs:subClassOf melcior:AcordeConsonante .
+
+
+###  http://leximus.es/source/melcior1859#ArmoniaAscendiente
+melcior:ArmoniaAscendiente rdf:type owl:Class ;
+                           rdfs:subClassOf melcior:ReglaDeEncadenamiento .
+
+
+###  http://leximus.es/source/melcior1859#ArmoniaDescendiente
+melcior:ArmoniaDescendiente rdf:type owl:Class ;
+                            rdfs:subClassOf melcior:ReglaDeEncadenamiento .
+
+
+###  http://leximus.es/source/melcior1859#BajoFundamental
+melcior:BajoFundamental rdf:type owl:Class ;
+                        rdfs:subClassOf cidoc:E73_Information_Object .
+
+
+###  http://leximus.es/source/melcior1859#Cadencia
+melcior:Cadencia rdf:type owl:Class ;
+                 rdfs:subClassOf cidoc:E73_Information_Object .
+
+
+###  http://leximus.es/source/melcior1859#CualidadPerceptiva
+melcior:CualidadPerceptiva rdf:type owl:Class ;
+                           rdfs:comment "No es E73 ni E28: es una cualidad predicada por el autor. Tiene polaridad (positiva/negativa/neutra). En CIDOC podria mapearse a E55 Type, pero aqui se modela como clase propia porque Melcior le da un papel argumentativo central."@es ;
+                           rdfs:label "cualidad perceptiva"@es ;
+                           skos:definition "propiedad estetica o sensorial que Melcior atribuye a un acorde, intervalo o combinacion armonica"@es .
+
+
+###  http://leximus.es/source/melcior1859#EnlaceArmonico
+melcior:EnlaceArmonico rdf:type owl:Class ;
+                       rdfs:subClassOf cidoc:E73_Information_Object .
+
+
+###  http://leximus.es/source/melcior1859#FaseDeProcedimiento
+melcior:FaseDeProcedimiento rdf:type owl:Class ;
+                            rdfs:subClassOf cidoc:E29_Design_or_Procedure ;
+                            rdfs:label "fase de procedimiento"@es ;
+                            skos:definition "paso individual dentro de un procedimiento secuencial"@es .
+
+
+###  http://leximus.es/source/melcior1859#Inversion
+melcior:Inversion rdf:type owl:Class ;
+                  rdfs:subClassOf cidoc:E29_Design_or_Procedure .
+
+
+###  http://leximus.es/source/melcior1859#InversionDeAcorde
+melcior:InversionDeAcorde rdf:type owl:Class ;
+                          rdfs:subClassOf melcior:Inversion ;
+                          leximus:nivelEvidencia "TEXTUAL"@es ;
+                          rdfs:comment "Melcior: 'el acorde Do Mi Sol, invertido en esta forma: Mi, Sol, Do, o Sol, Do, Mi, cambia de denominacion, y forma una variedad en la armonia'. La inversion NO cambia la naturaleza del acorde. Descubrimiento atribuido a Rameau."@es ;
+                          rdfs:label "inversion de acorde"@es ;
+                          skos:definition "operacion de colocar las notas de un acorde en distinta situacion del orden directo"@es .
+
+
+###  http://leximus.es/source/melcior1859#InversionDeIntervalo
+melcior:InversionDeIntervalo rdf:type owl:Class ;
+                             rdfs:subClassOf melcior:Inversion ;
+                             leximus:nivelEvidencia "TEXTUAL"@es ;
+                             rdfs:comment "Melcior: 'el intervalo de mi tercera mayor en el orden directo, se transforma en 6.a menor al invertirlo'. La inversion CAMBIA el intervalo."@es ;
+                             rdfs:label "inversion de intervalo"@es ;
+                             skos:definition "operacion que transforma un intervalo en su complementario dentro de la octava"@es .
+
+
+###  http://leximus.es/source/melcior1859#Ligadura
+melcior:Ligadura rdf:type owl:Class ;
+                 rdfs:subClassOf cidoc:E73_Information_Object .
+
+
+###  http://leximus.es/source/melcior1859#MayorCon5aAumentada
+melcior:MayorCon5aAumentada rdf:type owl:Class ;
+                            rdfs:subClassOf melcior:AcordeAlteradoAscendente .
+
+
+###  http://leximus.es/source/melcior1859#MayorCon5aDiminuta
+melcior:MayorCon5aDiminuta rdf:type owl:Class ;
+                           rdfs:subClassOf melcior:AcordeAlteradoDescendente .
+
+
+###  http://leximus.es/source/melcior1859#ModeloDeProgresion
+melcior:ModeloDeProgresion rdf:type owl:Class .
+
+
+###  http://leximus.es/source/melcior1859#MovimientoArmonico
+melcior:MovimientoArmonico rdf:type owl:Class ;
+                           rdfs:subClassOf cidoc:E73_Information_Object .
+
+
+###  http://leximus.es/source/melcior1859#MovimientoContrario
+melcior:MovimientoContrario rdf:type owl:Class ;
+                            rdfs:subClassOf melcior:MovimientoArmonico ;
+                            rdfs:label "movimiento contrario"@es ;
+                            skos:definition "cuando una parte sube y otra baja"@es .
+
+
+###  http://leximus.es/source/melcior1859#MovimientoOblicuo
+melcior:MovimientoOblicuo rdf:type owl:Class ;
+                          rdfs:subClassOf melcior:MovimientoArmonico ;
+                          rdfs:label "movimiento oblicuo"@es ;
+                          skos:definition "cuando una parte se mueve y otra permanece quieta"@es .
+
+
+###  http://leximus.es/source/melcior1859#MovimientoSemejante
+melcior:MovimientoSemejante rdf:type owl:Class ;
+                            rdfs:subClassOf melcior:MovimientoArmonico ;
+                            rdfs:comment "Melcior (directo, f10): 'movimiento directo es cuando dos o mas partes suben o bajan juntas, pero mas comunmente se llama semejante'."@es ;
+                            rdfs:label "movimiento semejante"@es ;
+                            skos:altLabel "movimiento directo"@es ;
+                            skos:definition "cuando ambas partes van en la misma direccion"@es .
+
+
+###  http://leximus.es/source/melcior1859#Nota
+melcior:Nota rdf:type owl:Class ;
+             rdfs:subClassOf cidoc:E73_Information_Object .
+
+
+###  http://leximus.es/source/melcior1859#NotaExtranaAlAcorde
+melcior:NotaExtranaAlAcorde rdf:type owl:Class ;
+                            rdfs:subClassOf cidoc:E73_Information_Object .
+
+
+###  http://leximus.es/source/melcior1859#NotaFundamental
+melcior:NotaFundamental rdf:type owl:Class ;
+                        rdfs:label "nota fundamental"@es ;
+                        skos:altLabel "nota generante"@es ;
+                        skos:definition "sonido que sirve de fundamento a acorde o tono"@es .
+
+
+###  http://leximus.es/source/melcior1859#NovenaMayor
+melcior:NovenaMayor rdf:type owl:Class ;
+                    rdfs:subClassOf melcior:AcordeDisonantePrimitivo .
+
+
+###  http://leximus.es/source/melcior1859#NovenaMayorCon5aAumentada
+melcior:NovenaMayorCon5aAumentada rdf:type owl:Class ;
+                                  rdfs:subClassOf melcior:AcordeAlteradoAscendente .
+
+
+###  http://leximus.es/source/melcior1859#NovenaMayorCon5aDiminuta
+melcior:NovenaMayorCon5aDiminuta rdf:type owl:Class ;
+                                 rdfs:subClassOf melcior:AcordeAlteradoDescendente .
+
+
+###  http://leximus.es/source/melcior1859#NovenaMenor
+melcior:NovenaMenor rdf:type owl:Class ;
+                    rdfs:subClassOf melcior:AcordeDisonantePrimitivo .
+
+
+###  http://leximus.es/source/melcior1859#NovenaMenorCon5aAumentada
+melcior:NovenaMenorCon5aAumentada rdf:type owl:Class ;
+                                  rdfs:subClassOf melcior:AcordeAlteradoAscendente .
+
+
+###  http://leximus.es/source/melcior1859#NovenaMenorCon5aDiminuta
+melcior:NovenaMenorCon5aDiminuta rdf:type owl:Class ;
+                                 rdfs:subClassOf melcior:AcordeAlteradoDescendente .
+
+
+###  http://leximus.es/source/melcior1859#Parte
+melcior:Parte rdf:type owl:Class ;
+              rdfs:subClassOf cidoc:E73_Information_Object .
+
+
+###  http://leximus.es/source/melcior1859#ProgresionArmonica
+melcior:ProgresionArmonica rdf:type owl:Class ;
+                           rdfs:subClassOf cidoc:E73_Information_Object .
+
+
+###  http://leximus.es/source/melcior1859#ProhibicionFalsaRelacion
+melcior:ProhibicionFalsaRelacion rdf:type owl:Class ;
+                                 rdfs:subClassOf melcior:ReglaArmonica .
+
+
+###  http://leximus.es/source/melcior1859#ProhibicionQuintasOctavasSeguidas
+melcior:ProhibicionQuintasOctavasSeguidas rdf:type owl:Class ;
+                                          rdfs:subClassOf melcior:ReglaArmonica .
+
+
+###  http://leximus.es/source/melcior1859#ReglaArmonica
+melcior:ReglaArmonica rdf:type owl:Class ;
+                      rdfs:subClassOf cidoc:E29_Design_or_Procedure ;
+                      rdfs:comment "En el diccionario, las reglas son E29: procedimientos formulados ('todo acorde disonante se resuelve por 5.a inferior o 4.a superior'). Su aplicacion a una partitura concreta sera un E7 Activity (capa futura)."@es ;
+                      rdfs:label "regla armonica"@es ;
+                      skos:definition "procedimiento prescriptivo para el manejo de acordes"@es .
+
+
+###  http://leximus.es/source/melcior1859#ReglaDeEncadenamiento
+melcior:ReglaDeEncadenamiento rdf:type owl:Class ;
+                              rdfs:subClassOf melcior:ReglaArmonica .
+
+
+###  http://leximus.es/source/melcior1859#Resonancia
+melcior:Resonancia rdf:type owl:Class ;
+                   rdfs:comment "Fenomeno fisico del que se origina el acorde perfecto."@es ;
+                   rdfs:label "resonancia"@es .
+
+
+###  http://leximus.es/source/melcior1859#Septima2aEspecie
+melcior:Septima2aEspecie rdf:type owl:Class ;
+                         rdfs:subClassOf melcior:AcordeDisonantePrimitivo .
+
+
+###  http://leximus.es/source/melcior1859#Septima3aEspecie
+melcior:Septima3aEspecie rdf:type owl:Class ;
+                         rdfs:subClassOf melcior:AcordeDisonantePrimitivo .
+
+
+###  http://leximus.es/source/melcior1859#Septima4aEspecie
+melcior:Septima4aEspecie rdf:type owl:Class ;
+                         rdfs:subClassOf melcior:AcordeDisonantePrimitivo .
+
+
+###  http://leximus.es/source/melcior1859#Septima4aEspecieCon5aAumentada
+melcior:Septima4aEspecieCon5aAumentada rdf:type owl:Class ;
+                                       rdfs:subClassOf melcior:AcordeAlteradoAscendente .
+
+
+###  http://leximus.es/source/melcior1859#SeptimaDisminuida
+melcior:SeptimaDisminuida rdf:type owl:Class ;
+                          rdfs:subClassOf melcior:AcordeDisonantePrimitivo .
+
+
+###  http://leximus.es/source/melcior1859#SeptimaDominante
+melcior:SeptimaDominante rdf:type owl:Class ;
+                         rdfs:subClassOf melcior:AcordeDisonantePrimitivo .
+
+
+###  http://leximus.es/source/melcior1859#SeptimaDominanteCon5aAumentada
+melcior:SeptimaDominanteCon5aAumentada rdf:type owl:Class ;
+                                       rdfs:subClassOf melcior:AcordeAlteradoAscendente .
+
+
+###  http://leximus.es/source/melcior1859#SeptimaDominanteCon5aDiminuta
+melcior:SeptimaDominanteCon5aDiminuta rdf:type owl:Class ;
+                                      rdfs:subClassOf melcior:AcordeAlteradoDescendente .
+
+
+###  http://leximus.es/source/melcior1859#Sonido
+melcior:Sonido rdf:type owl:Class ;
+               rdfs:subClassOf cidoc:E73_Information_Object .
+
+
+###  http://leximus.es/source/melcior1859#TratamientoDeLaDisonancia
+melcior:TratamientoDeLaDisonancia rdf:type owl:Class ;
+                                  rdfs:subClassOf melcior:ReglaArmonica .
+
+
+###  http://leximus.es/source/melcior1859#Triada
+melcior:Triada rdf:type owl:Class .
+
+
+###  http://leximus.es/source/melcior1859#ValoracionEstetica
+melcior:ValoracionEstetica rdf:type owl:Class ;
+                           rdfs:comment "Reificacion necesaria porque la misma entidad musical puede recibir cualidades opuestas segun las condiciones. P. ej., el acorde disonante es 'insoportable' sin preparacion pero produce 'bellisimo efecto' con ella. Sin reificar, estas dos predicaciones serian contradictorias."@es ;
+                           rdfs:label "valoracion estetica"@es ;
+                           skos:definition "predicacion de una cualidad perceptiva sobre un acorde o combinacion armonica, con condiciones opcionales"@es .
+
+
+###  http://www.cidoc-crm.org/cidoc-crm/E29_Design_or_Procedure
+cidoc:E29_Design_or_Procedure rdf:type owl:Class .
+
+
+###  http://www.cidoc-crm.org/cidoc-crm/E55_Type
+cidoc:E55_Type rdf:type owl:Class .
+
+
+###  http://www.cidoc-crm.org/cidoc-crm/E73_Information_Object
+cidoc:E73_Information_Object rdf:type owl:Class .
+
+
+###  http://www.cidoc-crm.org/cidoc-crm/E89_Propositional_Object
+cidoc:E89_Propositional_Object rdf:type owl:Class .
+
+
+###  http://www.w3.org/ns/lemon/ontolex#Form
+ontolex:Form rdf:type owl:Class .
+
+
+###  http://www.w3.org/ns/lemon/ontolex#LexicalEntry
+ontolex:LexicalEntry rdf:type owl:Class .
+
+
+###  http://www.w3.org/ns/lemon/ontolex#LexicalSense
+ontolex:LexicalSense rdf:type owl:Class .
+
+
+###  http://www.w3.org/ns/prov#Agent
+prov:Agent rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://leximus.es/source/melcior1859#Acorde
+melcior:Acorde rdf:type owl:NamedIndividual ;
+               leximus:fuenteEntry "melcior_1859_acorde" .
+
+
+###  http://leximus.es/source/melcior1859#Acorde6aAumentada
+melcior:Acorde6aAumentada rdf:type owl:NamedIndividual ;
+                          leximus:permiteProceso melcior:ModulacionEnarmonicaPor6a .
+
+
+###  http://leximus.es/source/melcior1859#AcordeCompleto
+melcior:AcordeCompleto rdf:type owl:NamedIndividual ;
+                       leximus:opuestoDe melcior:AcordeImperfecto .
+
+
+###  http://leximus.es/source/melcior1859#AcordeConsonante
+melcior:AcordeConsonante rdf:type owl:NamedIndividual ;
+                         leximus:opuestoDe melcior:AcordeDisonante ;
+                         leximus:tienePropiedad melcior:PerfeccionMusical ;
+                         leximus:determinaModo "por su 3.a mayor o menor"@es .
+
+
+###  http://leximus.es/source/melcior1859#AcordeDiminuto
+melcior:AcordeDiminuto rdf:type owl:NamedIndividual ;
+                       leximus:seResuelveEn melcior:AcordeConsonante ,
+                                            melcior:SeptimaDominante ;
+                       leximus:necesitaPreparacion "false"^^xsd:boolean ;
+                       leximus:ordenEnClasificacion 1 .
+
+
+###  http://leximus.es/source/melcior1859#AcordeDirecto
+melcior:AcordeDirecto rdf:type owl:NamedIndividual ;
+                      leximus:opuestoDe melcior:AcordeInvertido ;
+                      leximus:fuenteEntry "melcior_1859_directo" .
+
+
+###  http://leximus.es/source/melcior1859#AcordeDisonante
+melcior:AcordeDisonante rdf:type owl:NamedIndividual ;
+                        leximus:opuestoDe melcior:AcordeConsonante .
+
+
+###  http://leximus.es/source/melcior1859#AcordeDisonanteAlterado
+melcior:AcordeDisonanteAlterado rdf:type owl:NamedIndividual ;
+                                leximus:opuestoDe melcior:AcordeDisonantePrimitivo .
+
+
+###  http://leximus.es/source/melcior1859#AcordeDisonantePrimitivo
+melcior:AcordeDisonantePrimitivo rdf:type owl:NamedIndividual ;
+                                 leximus:opuestoDe melcior:AcordeDisonanteAlterado .
+
+
+###  http://leximus.es/source/melcior1859#AcordeImperfecto
+melcior:AcordeImperfecto rdf:type owl:NamedIndividual ;
+                         leximus:opuestoDe melcior:AcordeCompleto ;
+                         leximus:fuenteEntry "melcior_1859_imperfecto" .
+
+
+###  http://leximus.es/source/melcior1859#AcordeInvertido
+melcior:AcordeInvertido rdf:type owl:NamedIndividual ;
+                        leximus:opuestoDe melcior:AcordeDirecto ;
+                        leximus:fuenteEntry "melcior_1859_inversion" .
+
+
+###  http://leximus.es/source/melcior1859#AcordePerfectoMayor
+melcior:AcordePerfectoMayor rdf:type owl:NamedIndividual ;
+                            leximus:seCompone "fundamental + 3.a mayor + 5.a justa"@es .
+
+
+###  http://leximus.es/source/melcior1859#AcordePerfectoMenor
+melcior:AcordePerfectoMenor rdf:type owl:NamedIndividual ;
+                            leximus:seCompone "fundamental + 3.a menor + 5.a justa"@es .
+
+
+###  http://leximus.es/source/melcior1859#Acorde_s1
+melcior:Acorde_s1 rdf:type owl:NamedIndividual ,
+                           ontolex:LexicalSense ;
+                  rdfs:label "acorde: adicion de sonidos simultaneos"@es ;
+                  skos:definition "adicion de dos o mas sonidos a otro sonido dado, tocados o cantados simultaneamente, de los que resulte belleza en su conjunto"@es ;
+                  ontolex:reference melcior:Acorde .
+
+
+###  http://leximus.es/source/melcior1859#Agradable
+melcior:Agradable rdf:type owl:NamedIndividual ,
+                           melcior:CualidadPerceptiva ;
+                  leximus:polaridad "positiva"@es ;
+                  rdfs:label "agradable"@es .
+
+
+###  http://leximus.es/source/melcior1859#Armonia
+melcior:Armonia rdf:type owl:NamedIndividual ,
+                         cidoc:E55_Type ;
+                leximus:tienePorObjeto melcior:Acorde ;
+                leximus:fuenteEntry "melcior_1859_armonia" ;
+                rdfs:comment "Modelada como E55 Type (tecnica general), no como E29 ni E89. Armonia es el nombre de la disciplina/tecnica, como 'oleo' o 'contrapunto'. Las reglas concretas que la componen (encadenamiento, tratamiento de disonancia, etc.) son E29 Design or Procedure. En CIDOC, P32 conecta una actividad (E7) con su tecnica general (E55); P33 la conecta con el procedimiento especifico (E29). Lema polisemico en Melcior: (1) disciplina = la ciencia de los acordes (def. Fetis adoptada, armonia f4); (2) progresion = flujo armonico concreto, como en 'armonia ascendiente'; (3) resultado sonoro (f54); (4) estilo personal (f44). Acepcion 2 se modela como subtipos de ReglaDeEncadenamiento."@es ;
+                rdfs:label "armonia"@es ;
+                skos:definition "la ciencia de los acordes; abarca conocimiento de acordes + habilidad para emplearlos"@es .
+
+
+###  http://leximus.es/source/melcior1859#ArmoniaAscendiente
+melcior:ArmoniaAscendiente rdf:type owl:NamedIndividual ;
+                           leximus:opuestoDe melcior:ArmoniaDescendiente ;
+                           leximus:fuenteEntry "melcior_1859_ascendiente_armonia" .
+
+
+###  http://leximus.es/source/melcior1859#ArmoniaDescendiente
+melcior:ArmoniaDescendiente rdf:type owl:NamedIndividual ;
+                            leximus:opuestoDe melcior:ArmoniaAscendiente ;
+                            leximus:fuenteEntry "melcior_1859_ascendiente_armonia" .
+
+
+###  http://leximus.es/source/melcior1859#Armonia_s1
+melcior:Armonia_s1 rdf:type owl:NamedIndividual ,
+                            ontolex:LexicalSense ;
+                   rdfs:label "armonia: disciplina"@es ;
+                   skos:definition "la ciencia de los acordes"@es ;
+                   ontolex:reference melcior:Armonia .
+
+
+###  http://leximus.es/source/melcior1859#Armonia_s2
+melcior:Armonia_s2 rdf:type owl:NamedIndividual ,
+                            ontolex:LexicalSense ;
+                   rdfs:label "armonia: progresion concreta"@es ;
+                   skos:definition "flujo armonico concreto (armonia ascendiente/descendiente)"@es ;
+                   ontolex:reference melcior:ReglaDeEncadenamiento .
+
+
+###  http://leximus.es/source/melcior1859#Armonia_s3
+melcior:Armonia_s3 rdf:type owl:NamedIndividual ,
+                            ontolex:LexicalSense ;
+                   rdfs:label "armonia: resultado sonoro"@es ;
+                   skos:definition "la armonia de los acordes puede presentarse de diferentes modos"@es .
+
+
+###  http://leximus.es/source/melcior1859#Armonia_s4
+melcior:Armonia_s4 rdf:type owl:NamedIndividual ,
+                            ontolex:LexicalSense ;
+                   rdfs:label "armonia: estilo"@es ;
+                   skos:definition "la armonia recibe un cierto colorido particular"@es .
+
+
+###  http://leximus.es/source/melcior1859#Aspero
+melcior:Aspero rdf:type owl:NamedIndividual ,
+                        melcior:CualidadPerceptiva ;
+               leximus:opuestoDe melcior:Dulce ;
+               leximus:polaridad "negativa"@es ;
+               rdfs:label "aspero / aspereza"@es .
+
+
+###  http://leximus.es/source/melcior1859#BajoFundamental
+melcior:BajoFundamental rdf:type owl:NamedIndividual ;
+                        leximus:fuenteEntry "melcior_1859_bajo_fundamental" .
+
+
+###  http://leximus.es/source/melcior1859#Bello
+melcior:Bello rdf:type owl:NamedIndividual ,
+                       melcior:CualidadPerceptiva ;
+              leximus:sinEntradaPropia "true"^^xsd:boolean ;
+              leximus:polaridad "positiva"@es ;
+              leximus:nivelEvidencia "TEXTUAL"@es ;
+              rdfs:comment "Estatus especial: es condicion DEFINITORIA del acorde ('de los que resulte belleza en su conjunto'), no una cualidad entre otras. Sin belleza no hay acorde, hay cacofonia. Sin embargo, Melcior NO define belleza — la trata como primitivo no analizado. Parada (1868) si la define como entrada propia: BELLEZA MUSICAL (parada_1868_belleza_musical)."@es ;
+              rdfs:label "belleza / bien sonancia"@es .
+
+
+###  http://leximus.es/source/melcior1859#Blando
+melcior:Blando rdf:type owl:NamedIndividual ,
+                        melcior:CualidadPerceptiva ;
+               leximus:opuestoDe melcior:Duro ;
+               leximus:sinEntradaPropia "true"^^xsd:boolean ;
+               leximus:polaridad "positiva"@es ;
+               rdfs:comment "Sin entrada propia. Aparece en contraste con duro (unidad, f21): 'acordes duros, si la expresion lo requiere, y de acordes blandos si la expresion es dulce'. Termino no marcado."@es ;
+               rdfs:label "blando"@es .
+
+
+###  http://leximus.es/source/melcior1859#Brillante
+melcior:Brillante rdf:type owl:NamedIndividual ,
+                           melcior:CualidadPerceptiva ;
+                  leximus:polaridad "positiva"@es ;
+                  rdfs:label "brillo"@es .
+
+
+###  http://leximus.es/source/melcior1859#Cacofonico
+melcior:Cacofonico rdf:type owl:NamedIndividual ,
+                            melcior:CualidadPerceptiva ;
+                   leximus:polaridad "negativa"@es ;
+                   rdfs:label "cacofonico"@es .
+
+
+###  http://leximus.es/source/melcior1859#Cadencia
+melcior:Cadencia rdf:type owl:NamedIndividual ;
+                 leximus:fuenteEntry "melcior_1859_cadencia" .
+
+
+###  http://leximus.es/source/melcior1859#CadenciaInterrumpida
+melcior:CadenciaInterrumpida rdf:type owl:NamedIndividual ,
+                                      melcior:Cadencia ;
+                             rdfs:comment "Melcior (cadencia, f15-16): 'se evita el caer al reposo, y, por lo tanto, debe continuar la armonia hasta que caiga en un acorde perfecto'."@es ;
+                             rdfs:label "cadencia interrumpida"@es ;
+                             skos:definition "desde la 7.a dominante, en vez de caer en acorde perfecto, salta a la 7.a dominante de otro tono"@es .
+
+
+###  http://leximus.es/source/melcior1859#CadenciaPerfecta
+melcior:CadenciaPerfecta rdf:type owl:NamedIndividual ,
+                                  melcior:Cadencia ;
+                         rdfs:comment "Melcior (cadencia, f12-14): 'Se llama cadencia perfecta el reposo que se hace al fin de una frase sobre el acorde perfecto en el orden directo, precedido del de la septima dominante sin inversion'. Tambien llamada 'autentica' (authentes = superior)."@es ;
+                         rdfs:label "cadencia perfecta (= autentica)"@es ;
+                         skos:definition "reposo sobre acorde perfecto directo, precedido de 7.a dominante sin inversion, cayendo en el primer tiempo"@es .
+
+
+###  http://leximus.es/source/melcior1859#CadenciaPlagal
+melcior:CadenciaPlagal rdf:type owl:NamedIndividual ,
+                                melcior:Cadencia ;
+                       rdfs:comment "Melcior (cadencia, f19-23): 'Regularmente solo se hace despues de un acorde perfecto, y al final de un compas'. Origen dorico. Los antiguos no podian concluir en menor."@es ;
+                       rdfs:label "cadencia plagal"@es ;
+                       skos:definition "reposo en acorde directo precedido del acorde de 4.a directo o inverso"@es .
+
+
+###  http://leximus.es/source/melcior1859#CadenciaRota
+melcior:CadenciaRota rdf:type owl:NamedIndividual ,
+                              melcior:Cadencia ;
+                     rdfs:comment "Melcior (cadencia, f17-18): 'enganan, digamoslo asi, al oido, el cual espera la caida a un acorde perfecto correspondiente a la 7.a enunciada, y oye otro distinto'."@es ;
+                     rdfs:label "cadencia rota (= engano)"@es ;
+                     skos:definition "de la 7.a dominante se pasa a un acorde perfecto distinto del esperado"@es .
+
+
+###  http://leximus.es/source/melcior1859#Catel
+melcior:Catel rdf:type owl:NamedIndividual ,
+                       prov:Agent ;
+              rdfs:comment "Deduce los acordes de las fracciones del monocordio."@es ;
+              rdfs:label "Charles-Simon Catel" .
+
+
+###  http://leximus.es/source/melcior1859#ClasificacionAcordesSegunReicha
+melcior:ClasificacionAcordesSegunReicha rdf:type owl:NamedIndividual ,
+                                                 cidoc:E89_Propositional_Object ;
+                                        leximus:contieneTipo melcior:AcordeDiminuto ,
+                                                             melcior:MayorCon5aAumentada ,
+                                                             melcior:MayorCon5aDiminuta ,
+                                                             melcior:NovenaMayor ,
+                                                             melcior:NovenaMayorCon5aAumentada ,
+                                                             melcior:NovenaMayorCon5aDiminuta ,
+                                                             melcior:NovenaMenor ,
+                                                             melcior:NovenaMenorCon5aAumentada ,
+                                                             melcior:NovenaMenorCon5aDiminuta ,
+                                                             melcior:Septima2aEspecie ,
+                                                             melcior:Septima3aEspecie ,
+                                                             melcior:Septima4aEspecie ,
+                                                             melcior:Septima4aEspecieCon5aAumentada ,
+                                                             melcior:SeptimaDominante ,
+                                                             melcior:SeptimaDominanteCon5aAumentada ,
+                                                             melcior:SeptimaDominanteCon5aDiminuta ;
+                                        leximus:esAdoptadaPor melcior:Melcior ;
+                                        leximus:esAtribuidaA melcior:Reicha ;
+                                        leximus:nivelEvidencia "TEXTUAL"@es ;
+                                        cidoc:P67_refers_to melcior:AcordeDisonante ;
+                                        rdfs:comment "Melcior adopta la clasificacion de Reicha para los 17 tipos de acordes disonantes (7 primitivos + 10 alterados). Frase: 'siguiendo la clasificacion que hace de ellos el maestro Reicha'."@es ;
+                                        rdfs:label "clasificacion de los acordes disonantes segun Reicha"@es .
+
+
+###  http://leximus.es/source/melcior1859#CriticaARousseau
+melcior:CriticaARousseau rdf:type owl:NamedIndividual ,
+                                  cidoc:E89_Propositional_Object ;
+                         leximus:esAtribuidaA melcior:Rousseau ;
+                         leximus:esRechazadaPor melcior:Melcior ;
+                         leximus:nivelEvidencia "TEXTUAL"@es ;
+                         cidoc:P67_refers_to melcior:AcordeDisonante ;
+                         rdfs:comment "Rousseau define disonancia como 'todo sonido que forma acorde desagradable'. Melcior rechaza esta definicion: 'Las disonancias no son desagradables en la musica, al contrario, la que no las tuviera, seria muy chabacana'."@es ;
+                         rdfs:label "critica de Melcior a la definicion de disonancia de Rousseau"@es .
+
+
+###  http://leximus.es/source/melcior1859#DefinicionFetisArmonia
+melcior:DefinicionFetisArmonia rdf:type owl:NamedIndividual ,
+                                        cidoc:E89_Propositional_Object ;
+                               leximus:esAtribuidaA melcior:Fetis ;
+                               leximus:nivelEvidencia "TEXTUAL"@es ;
+                               cidoc:P67_refers_to melcior:Armonia ;
+                               rdfs:label "definicion de Fetis: armonia como ciencia de los acordes"@es .
+
+
+###  http://leximus.es/source/melcior1859#Desagradable
+melcior:Desagradable rdf:type owl:NamedIndividual ,
+                              melcior:CualidadPerceptiva ;
+                     leximus:opuestoDe melcior:Agradable ;
+                     leximus:polaridad "negativa"@es ;
+                     rdfs:label "desagradable"@es .
+
+
+###  http://leximus.es/source/melcior1859#DescubrimientoInversionesRameau
+melcior:DescubrimientoInversionesRameau rdf:type owl:NamedIndividual ,
+                                                 cidoc:E89_Propositional_Object ;
+                                        leximus:esAdoptadaPor melcior:Melcior ;
+                                        leximus:esAtribuidaA melcior:Rameau ;
+                                        leximus:nivelEvidencia "TEXTUAL"@es ;
+                                        cidoc:P67_refers_to melcior:Inversion ;
+                                        rdfs:comment "Melcior atribuye a Rameau el descubrimiento de que los acordes invertidos son los mismos acordes en distinta disposicion, no acordes nuevos."@es ;
+                                        rdfs:label "descubrimiento de Rameau: las inversiones son los mismos acordes"@es .
+
+
+###  http://leximus.es/source/melcior1859#Directo_s1
+melcior:Directo_s1 rdf:type owl:NamedIndividual ,
+                            ontolex:LexicalSense ;
+                   rdfs:label "directo: intervalo con la fundamental"@es ;
+                   skos:definition "intervalo que forma una nota armonica con cualquiera otra que sea fundamental"@es .
+
+
+###  http://leximus.es/source/melcior1859#Directo_s2
+melcior:Directo_s2 rdf:type owl:NamedIndividual ,
+                            ontolex:LexicalSense ;
+                   rdfs:label "directo: acorde en posicion fundamental"@es ;
+                   skos:definition "acorde cuyas partes van de lo grave al agudo sobre un sonido fundamental"@es ;
+                   ontolex:reference melcior:AcordeDirecto .
+
+
+###  http://leximus.es/source/melcior1859#Directo_s3
+melcior:Directo_s3 rdf:type owl:NamedIndividual ,
+                            ontolex:LexicalSense ;
+                   rdfs:label "directo: movimiento semejante"@es ;
+                   skos:definition "movimiento directo es cuando dos o mas partes suben o bajan juntas"@es ;
+                   ontolex:reference melcior:MovimientoSemejante .
+
+
+###  http://leximus.es/source/melcior1859#Dulce
+melcior:Dulce rdf:type owl:NamedIndividual ,
+                       melcior:CualidadPerceptiva ;
+              leximus:polaridad "positiva"@es ;
+              rdfs:label "dulce"@es .
+
+
+###  http://leximus.es/source/melcior1859#Duro
+melcior:Duro rdf:type owl:NamedIndividual ,
+                      melcior:CualidadPerceptiva ;
+             leximus:opuestoDe melcior:Blando ;
+             leximus:fuenteEntry "melcior_1859_duro" ;
+             leximus:polaridad "negativa"@es ;
+             rdfs:comment "Melcior (duro, f1-f6): se aplica a voces, instrumentos, composiciones, intervalos y acordes. En armonia, son duros los de tritono, 5.a aumentada y disonancias mayores (f5). Pero 'son expresivas y sentimentales si se manejan bien' (f5); 'usadas oportunamente producen muy buenos efectos' (f6)."@es ;
+             rdfs:label "duro / dureza"@es ;
+             skos:closeMatch melcior:Aspero ;
+             skos:definition "todo cuanto mortifica al oido por su aspereza"@es .
+
+
+###  http://leximus.es/source/melcior1859#Encadenamiento_s1
+melcior:Encadenamiento_s1 rdf:type owl:NamedIndividual ,
+                                   ontolex:LexicalSense ;
+                          ontolex:reference melcior:EnlaceArmonico .
+
+
+###  http://leximus.es/source/melcior1859#Encantador
+melcior:Encantador rdf:type owl:NamedIndividual ,
+                            melcior:CualidadPerceptiva ;
+                   leximus:polaridad "positiva"@es ;
+                   rdfs:label "encanto"@es .
+
+
+###  http://leximus.es/source/melcior1859#EnlaceArmonico
+melcior:EnlaceArmonico rdf:type owl:NamedIndividual ;
+                       leximus:fuenteEntry "melcior_1859_enlace_armonico" .
+
+
+###  http://leximus.es/source/melcior1859#EnlaceArmonico_s1
+melcior:EnlaceArmonico_s1 rdf:type owl:NamedIndividual ,
+                                   ontolex:LexicalSense ;
+                          rdfs:label "enlace armonico: coherencia entre acordes"@es ;
+                          skos:definition "necesidad absoluta entre acordes; buen enlace produce progresion armonica"@es ;
+                          ontolex:reference melcior:EnlaceArmonico .
+
+
+###  http://leximus.es/source/melcior1859#Fetis
+melcior:Fetis rdf:type owl:NamedIndividual ,
+                       prov:Agent ;
+              rdfs:comment "Define la armonia como 'la ciencia de los acordes'."@es ;
+              rdfs:label "Francois-Joseph Fetis" .
+
+
+###  http://leximus.es/source/melcior1859#Fluidez
+melcior:Fluidez rdf:type owl:NamedIndividual ,
+                         melcior:CualidadPerceptiva ;
+                leximus:fuenteEntry "melcior_1859_fluidez" ;
+                leximus:polaridad "positiva"@es ;
+                rdfs:comment "Melcior (fluidez, f1): 'han de caminar bajo una ilacion y enlace de sonidos y de acordes, y con una marcha natural y facil, de modo que no se perciba que el compositor haya hecho esfuerzo alguno'. Antagonista: saltos incoherentes y acordes mal enlazados (f2). La fuga es el estudio mas propio para conseguirla (f3)."@es ;
+                rdfs:label "fluidez"@es ;
+                skos:definition "ilacion y enlace de sonidos y de acordes, con una marcha natural y facil"@es .
+
+
+###  http://leximus.es/source/melcior1859#Form_acorde
+melcior:Form_acorde rdf:type owl:NamedIndividual ,
+                             ontolex:Form ;
+                    ontolex:writtenRep "acorde"@es .
+
+
+###  http://leximus.es/source/melcior1859#Form_armonia
+melcior:Form_armonia rdf:type owl:NamedIndividual ,
+                              ontolex:Form ;
+                     ontolex:writtenRep "armonia"@es .
+
+
+###  http://leximus.es/source/melcior1859#Form_directo
+melcior:Form_directo rdf:type owl:NamedIndividual ,
+                              ontolex:Form ;
+                     ontolex:writtenRep "directo"@es .
+
+
+###  http://leximus.es/source/melcior1859#Form_encadenamiento
+melcior:Form_encadenamiento rdf:type owl:NamedIndividual ,
+                                     ontolex:Form ;
+                            ontolex:writtenRep "encadenamiento"@es .
+
+
+###  http://leximus.es/source/melcior1859#Form_enlace_armonico
+melcior:Form_enlace_armonico rdf:type owl:NamedIndividual ,
+                                      ontolex:Form ;
+                             ontolex:writtenRep "enlace armonico"@es .
+
+
+###  http://leximus.es/source/melcior1859#Form_inversion
+melcior:Form_inversion rdf:type owl:NamedIndividual ,
+                                ontolex:Form ;
+                       ontolex:writtenRep "inversion"@es .
+
+
+###  http://leximus.es/source/melcior1859#Form_marcha
+melcior:Form_marcha rdf:type owl:NamedIndividual ,
+                             ontolex:Form ;
+                    ontolex:writtenRep "marcha"@es .
+
+
+###  http://leximus.es/source/melcior1859#Form_movimiento
+melcior:Form_movimiento rdf:type owl:NamedIndividual ,
+                                 ontolex:Form ;
+                        ontolex:writtenRep "movimiento"@es .
+
+
+###  http://leximus.es/source/melcior1859#Form_nota
+melcior:Form_nota rdf:type owl:NamedIndividual ,
+                           ontolex:Form ;
+                  ontolex:writtenRep "nota"@es .
+
+
+###  http://leximus.es/source/melcior1859#Form_parte
+melcior:Form_parte rdf:type owl:NamedIndividual ,
+                            ontolex:Form ;
+                   ontolex:writtenRep "parte"@es .
+
+
+###  http://leximus.es/source/melcior1859#Form_progresion
+melcior:Form_progresion rdf:type owl:NamedIndividual ,
+                                 ontolex:Form ;
+                        ontolex:writtenRep "progresion"@es .
+
+
+###  http://leximus.es/source/melcior1859#Form_sonido
+melcior:Form_sonido rdf:type owl:NamedIndividual ,
+                             ontolex:Form ;
+                    ontolex:writtenRep "sonido"@es .
+
+
+###  http://leximus.es/source/melcior1859#Form_trastrueque
+melcior:Form_trastrueque rdf:type owl:NamedIndividual ,
+                                  ontolex:Form ;
+                         ontolex:writtenRep "trastrueque"@es .
+
+
+###  http://leximus.es/source/melcior1859#Grato
+melcior:Grato rdf:type owl:NamedIndividual ,
+                       melcior:CualidadPerceptiva ;
+              leximus:polaridad "positiva"@es ;
+              rdfs:label "grato"@es ;
+              skos:closeMatch melcior:Agradable .
+
+
+###  http://leximus.es/source/melcior1859#IdentidadAcordeBajoInversion
+melcior:IdentidadAcordeBajoInversion rdf:type owl:NamedIndividual ,
+                                              cidoc:E89_Propositional_Object ;
+                                     leximus:esAdoptadaPor melcior:Melcior ;
+                                     leximus:nivelEvidencia "TEXTUAL"@es ;
+                                     cidoc:P67_refers_to melcior:Acorde ,
+                                                         melcior:Inversion ;
+                                     rdfs:comment "Melcior (acorde, f100): 'los inexpertos ven en ellas unos nuevos acordes que al parecer son distintos, pero teniendo presente que los acordes se forman subiendo de tercera en tercera no podran equivocarse en su naturaleza'. La inversion cambia la disposicion, no la identidad. El criterio de identificacion es la reduccion a terceras."@es ;
+                                     rdfs:label "la inversion no crea un acorde nuevo"@es .
+
+
+###  http://leximus.es/source/melcior1859#Insoportable
+melcior:Insoportable rdf:type owl:NamedIndividual ,
+                              melcior:CualidadPerceptiva ;
+                     leximus:polaridad "negativa"@es ;
+                     rdfs:label "insoportable"@es .
+
+
+###  http://leximus.es/source/melcior1859#Inversion
+melcior:Inversion rdf:type owl:NamedIndividual ;
+                  leximus:fuenteEntry "melcior_1859_inversion" .
+
+
+###  http://leximus.es/source/melcior1859#Inversion_s1
+melcior:Inversion_s1 rdf:type owl:NamedIndividual ,
+                              ontolex:LexicalSense ;
+                     rdfs:label "inversion: de intervalo"@es ;
+                     skos:definition "el intervalo se transforma en su complementario (3.a mayor -> 6.a menor)"@es ;
+                     ontolex:reference melcior:InversionDeIntervalo .
+
+
+###  http://leximus.es/source/melcior1859#Inversion_s2
+melcior:Inversion_s2 rdf:type owl:NamedIndividual ,
+                              ontolex:LexicalSense ;
+                     rdfs:label "inversion: de acorde"@es ;
+                     skos:definition "las notas del acorde se colocan en distinta situacion; cambia la denominacion pero no la naturaleza"@es ;
+                     ontolex:reference melcior:InversionDeAcorde .
+
+
+###  http://leximus.es/source/melcior1859#LE_acorde
+melcior:LE_acorde rdf:type owl:NamedIndividual ,
+                           ontolex:LexicalEntry ;
+                  leximus:fuenteEntry "melcior_1859_acorde" ;
+                  rdfs:label "acorde"@es ;
+                  ontolex:canonicalForm melcior:Form_acorde ;
+                  ontolex:sense melcior:Acorde_s1 .
+
+
+###  http://leximus.es/source/melcior1859#LE_armonia
+melcior:LE_armonia rdf:type owl:NamedIndividual ,
+                            ontolex:LexicalEntry ;
+                   leximus:fuenteEntry "melcior_1859_armonia" ;
+                   rdfs:label "armonia"@es ;
+                   ontolex:canonicalForm melcior:Form_armonia ;
+                   ontolex:sense melcior:Armonia_s1 ,
+                                 melcior:Armonia_s2 ,
+                                 melcior:Armonia_s3 ,
+                                 melcior:Armonia_s4 .
+
+
+###  http://leximus.es/source/melcior1859#LE_directo
+melcior:LE_directo rdf:type owl:NamedIndividual ,
+                            ontolex:LexicalEntry ;
+                   leximus:fuenteEntry "melcior_1859_directo" ;
+                   rdfs:label "directo"@es ;
+                   ontolex:canonicalForm melcior:Form_directo ;
+                   ontolex:sense melcior:Directo_s1 ,
+                                 melcior:Directo_s2 ,
+                                 melcior:Directo_s3 .
+
+
+###  http://leximus.es/source/melcior1859#LE_encadenamiento
+melcior:LE_encadenamiento rdf:type owl:NamedIndividual ,
+                                   ontolex:LexicalEntry ;
+                          rdfs:comment "No tiene entrada propia en el diccionario. Aparece como termino discursivo en otras entradas: 'regla de encadenamiento', 'encadenar unos con otros segun regla'."@es ;
+                          rdfs:label "encadenamiento"@es ;
+                          ontolex:canonicalForm melcior:Form_encadenamiento ;
+                          ontolex:sense melcior:Encadenamiento_s1 .
+
+
+###  http://leximus.es/source/melcior1859#LE_enlace_armonico
+melcior:LE_enlace_armonico rdf:type owl:NamedIndividual ,
+                                    ontolex:LexicalEntry ;
+                           leximus:fuenteEntry "melcior_1859_enlace_armonico" ;
+                           rdfs:label "enlace armonico"@es ;
+                           ontolex:canonicalForm melcior:Form_enlace_armonico ;
+                           ontolex:sense melcior:EnlaceArmonico_s1 .
+
+
+###  http://leximus.es/source/melcior1859#LE_inversion
+melcior:LE_inversion rdf:type owl:NamedIndividual ,
+                              ontolex:LexicalEntry ;
+                     leximus:fuenteEntry "melcior_1859_inversion" ;
+                     rdfs:label "inversion"@es ;
+                     ontolex:canonicalForm melcior:Form_inversion ;
+                     ontolex:sense melcior:Inversion_s1 ,
+                                   melcior:Inversion_s2 .
+
+
+###  http://leximus.es/source/melcior1859#LE_marcha
+melcior:LE_marcha rdf:type owl:NamedIndividual ,
+                           ontolex:LexicalEntry ;
+                  leximus:fuenteEntry "melcior_1859_marcha" ;
+                  rdfs:label "marcha"@es ;
+                  ontolex:canonicalForm melcior:Form_marcha ;
+                  ontolex:sense melcior:Marcha_s1 ,
+                                melcior:Marcha_s2 ,
+                                melcior:Marcha_s3 .
+
+
+###  http://leximus.es/source/melcior1859#LE_movimiento
+melcior:LE_movimiento rdf:type owl:NamedIndividual ,
+                               ontolex:LexicalEntry ;
+                      leximus:fuenteEntry "melcior_1859_movimiento" ;
+                      rdfs:label "movimiento"@es ;
+                      ontolex:canonicalForm melcior:Form_movimiento ;
+                      ontolex:sense melcior:Movimiento_s1 ,
+                                    melcior:Movimiento_s2 .
+
+
+###  http://leximus.es/source/melcior1859#LE_nota
+melcior:LE_nota rdf:type owl:NamedIndividual ,
+                         ontolex:LexicalEntry ;
+                leximus:fuenteEntry "melcior_1859_notas_de_la_musica" ;
+                rdfs:label "nota"@es ;
+                ontolex:canonicalForm melcior:Form_nota ;
+                ontolex:sense melcior:Nota_s1 ,
+                              melcior:Nota_s2 ,
+                              melcior:Nota_s3 .
+
+
+###  http://leximus.es/source/melcior1859#LE_parte
+melcior:LE_parte rdf:type owl:NamedIndividual ,
+                          ontolex:LexicalEntry ;
+                 leximus:fuenteEntry "melcior_1859_parte" ;
+                 rdfs:label "parte"@es ;
+                 ontolex:canonicalForm melcior:Form_parte ;
+                 ontolex:sense melcior:Parte_s1 .
+
+
+###  http://leximus.es/source/melcior1859#LE_progresion
+melcior:LE_progresion rdf:type owl:NamedIndividual ,
+                               ontolex:LexicalEntry ;
+                      leximus:fuenteEntry "melcior_1859_progresion_o_marcha_armonica" ;
+                      rdfs:label "progresion"@es ;
+                      ontolex:canonicalForm melcior:Form_progresion ;
+                      ontolex:sense melcior:Progresion_s1 .
+
+
+###  http://leximus.es/source/melcior1859#LE_sonido
+melcior:LE_sonido rdf:type owl:NamedIndividual ,
+                           ontolex:LexicalEntry ;
+                  leximus:fuenteEntry "melcior_1859_sonido" ;
+                  rdfs:label "sonido"@es ;
+                  ontolex:canonicalForm melcior:Form_sonido ;
+                  ontolex:sense melcior:Sonido_s1 .
+
+
+###  http://leximus.es/source/melcior1859#LE_trastrueque
+melcior:LE_trastrueque rdf:type owl:NamedIndividual ,
+                                ontolex:LexicalEntry ;
+                       leximus:fuenteEntry "melcior_1859_trastrueque" ;
+                       rdfs:comment "Entrada de remision: 'Lo mismo que INVERSION. V.' (melcior_1859_trastrueque)."@es ;
+                       rdfs:label "trastrueque"@es ;
+                       ontolex:canonicalForm melcior:Form_trastrueque ;
+                       ontolex:sense melcior:Trastrueque_s1 .
+
+
+###  http://leximus.es/source/melcior1859#Ligadura
+melcior:Ligadura rdf:type owl:NamedIndividual ;
+                 leximus:fuenteEntry "melcior_1859_ligadura" .
+
+
+###  http://leximus.es/source/melcior1859#Marcha_s1
+melcior:Marcha_s1 rdf:type owl:NamedIndividual ,
+                           ontolex:LexicalSense ;
+                  rdfs:label "marcha: pieza militar"@es ;
+                  skos:definition "tocata que se ejecuta con instrumentos de viento, acompanada muchas veces con cajas de guerra"@es .
+
+
+###  http://leximus.es/source/melcior1859#Marcha_s2
+melcior:Marcha_s2 rdf:type owl:NamedIndividual ,
+                           ontolex:LexicalSense ;
+                  rdfs:label "marcha: progresion armonica"@es ;
+                  skos:definition "repeticion simetrica de un modelo (diseno) en diferentes grados"@es ;
+                  ontolex:reference melcior:ProgresionArmonica .
+
+
+###  http://leximus.es/source/melcior1859#Marcha_s3
+melcior:Marcha_s3 rdf:type owl:NamedIndividual ,
+                           ontolex:LexicalSense ;
+                  rdfs:label "marcha: movimiento de las partes"@es ;
+                  skos:definition "como se mueven las partes de una composicion ('marcha diatonica de las partes', 'marcha del bajo fundamental')"@es ;
+                  ontolex:reference melcior:MovimientoArmonico .
+
+
+###  http://leximus.es/source/melcior1859#MayorCon5aAumentada
+melcior:MayorCon5aAumentada rdf:type owl:NamedIndividual ;
+                            leximus:esAlteracionDe melcior:AcordeConsonante ;
+                            leximus:ordenEnClasificacion 8 .
+
+
+###  http://leximus.es/source/melcior1859#MayorCon5aDiminuta
+melcior:MayorCon5aDiminuta rdf:type owl:NamedIndividual ;
+                           leximus:esAlteracionDe melcior:AcordeConsonante ;
+                           leximus:ordenEnClasificacion 13 .
+
+
+###  http://leximus.es/source/melcior1859#Melcior
+melcior:Melcior rdf:type owl:NamedIndividual ,
+                         prov:Agent ;
+                rdfs:comment "Autor del Diccionario enciclopedico de la musica (1859)."@es ;
+                rdfs:label "Carlos Jose Melcior" .
+
+
+###  http://leximus.es/source/melcior1859#MetaforaClaroOscuro
+melcior:MetaforaClaroOscuro rdf:type owl:NamedIndividual ,
+                                     cidoc:E89_Propositional_Object ;
+                            leximus:esAdoptadaPor melcior:Melcior ;
+                            leximus:nivelEvidencia "TEXTUAL"@es ;
+                            cidoc:P67_refers_to melcior:AcordeConsonante ,
+                                                melcior:AcordeDisonante ;
+                            rdfs:comment "Melcior compara la mezcla consonancia/disonancia con el claro y oscuro en la pintura: 'Esta mezcla es a lo que el claro y oscuro en la pintura' (acorde, frase 7); 'son como las sombras en la pintura, que hacen resaltar mas los objetos' (disonancia, frase 58). Analogia entre percepcion visual y auditiva."@es ;
+                            rdfs:label "metafora del claro y oscuro en la pintura"@es .
+
+
+###  http://leximus.es/source/melcior1859#ModeloDeProgresion
+melcior:ModeloDeProgresion rdf:type owl:NamedIndividual ;
+                           leximus:fuenteEntry "melcior_1859_progresion_o_marcha_armonica" .
+
+
+###  http://leximus.es/source/melcior1859#ModulacionEnarmonicaPor6a
+melcior:ModulacionEnarmonicaPor6a rdf:type owl:NamedIndividual ;
+                                  rdfs:label "modulacion enarmonica por 6.a aumentada"@es .
+
+
+###  http://leximus.es/source/melcior1859#ModulacionEnarmonicaPorSeptima
+melcior:ModulacionEnarmonicaPorSeptima rdf:type owl:NamedIndividual ;
+                                       rdfs:label "modulacion enarmonica por 7.a disminuida"@es .
+
+
+###  http://leximus.es/source/melcior1859#Monotono
+melcior:Monotono rdf:type owl:NamedIndividual ,
+                          melcior:CualidadPerceptiva ;
+                 leximus:opuestoDe melcior:Variedad ;
+                 leximus:polaridad "negativa"@es ;
+                 rdfs:label "monotono e insulso"@es .
+
+
+###  http://leximus.es/source/melcior1859#MovimientoArmonico
+melcior:MovimientoArmonico rdf:type owl:NamedIndividual ;
+                           leximus:fuenteEntry "melcior_1859_movimiento" .
+
+
+###  http://leximus.es/source/melcior1859#Movimiento_s1
+melcior:Movimiento_s1 rdf:type owl:NamedIndividual ,
+                               ontolex:LexicalSense ;
+                      rdfs:label "movimiento: tempo"@es ;
+                      skos:definition "grado de velocidad en la ejecucion (allegro, andante...)"@es .
+
+
+###  http://leximus.es/source/melcior1859#Movimiento_s2
+melcior:Movimiento_s2 rdf:type owl:NamedIndividual ,
+                               ontolex:LexicalSense ;
+                      rdfs:label "movimiento: direccion de las partes"@es ;
+                      skos:definition "direccion en que se mueven las partes al pasar de un acorde a otro"@es ;
+                      ontolex:reference melcior:MovimientoArmonico .
+
+
+###  http://leximus.es/source/melcior1859#Nota
+melcior:Nota rdf:type owl:NamedIndividual ;
+             leximus:fuenteEntry "melcior_1859_notas_de_la_musica" .
+
+
+###  http://leximus.es/source/melcior1859#NotaExtranaAlAcorde
+melcior:NotaExtranaAlAcorde rdf:type owl:NamedIndividual ;
+                            leximus:fuenteEntry "melcior_1859_armonia" .
+
+
+###  http://leximus.es/source/melcior1859#Nota_s1
+melcior:Nota_s1 rdf:type owl:NamedIndividual ,
+                         ontolex:LexicalSense ;
+                rdfs:label "nota: signo grafico"@es ;
+                skos:definition "signo que representa un sonido en la escritura musical"@es ;
+                ontolex:reference melcior:Nota .
+
+
+###  http://leximus.es/source/melcior1859#Nota_s2
+melcior:Nota_s2 rdf:type owl:NamedIndividual ,
+                         ontolex:LexicalSense ;
+                rdfs:label "nota: saber de musica"@es ;
+                skos:definition "saber de musica (uso coloquial: 'tener nota')"@es .
+
+
+###  http://leximus.es/source/melcior1859#Nota_s3
+melcior:Nota_s3 rdf:type owl:NamedIndividual ,
+                         ontolex:LexicalSense ;
+                rdfs:label "nota: sinonimo de sonido"@es ;
+                skos:definition "nota es tambien sinonimo de sonido"@es ;
+                ontolex:reference melcior:Sonido .
+
+
+###  http://leximus.es/source/melcior1859#NovenaMayor
+melcior:NovenaMayor rdf:type owl:NamedIndividual ;
+                    leximus:seDerivaDe melcior:SeptimaDominante ;
+                    leximus:seResuelveEn melcior:AcordeConsonante ;
+                    leximus:necesitaPreparacion "false"^^xsd:boolean ;
+                    leximus:ordenEnClasificacion 6 ;
+                    leximus:seCompone "3.a mayor + 5.a justa + 7.a menor + 9.a mayor"@es .
+
+
+###  http://leximus.es/source/melcior1859#NovenaMayorCon5aAumentada
+melcior:NovenaMayorCon5aAumentada rdf:type owl:NamedIndividual ;
+                                  leximus:esAlteracionDe melcior:NovenaMayor ;
+                                  leximus:ordenEnClasificacion 11 .
+
+
+###  http://leximus.es/source/melcior1859#NovenaMayorCon5aDiminuta
+melcior:NovenaMayorCon5aDiminuta rdf:type owl:NamedIndividual ;
+                                 leximus:esAlteracionDe melcior:NovenaMayor ;
+                                 leximus:ordenEnClasificacion 15 .
+
+
+###  http://leximus.es/source/melcior1859#NovenaMenor
+melcior:NovenaMenor rdf:type owl:NamedIndividual ;
+                    leximus:seDerivaDe melcior:SeptimaDominante ;
+                    leximus:ordenEnClasificacion 7 ;
+                    leximus:seCompone "3.a mayor + 5.a justa + 7.a menor + 9.a menor"@es .
+
+
+###  http://leximus.es/source/melcior1859#NovenaMenorCon5aAumentada
+melcior:NovenaMenorCon5aAumentada rdf:type owl:NamedIndividual ;
+                                  leximus:esAlteracionDe melcior:NovenaMenor ;
+                                  leximus:ordenEnClasificacion 12 .
+
+
+###  http://leximus.es/source/melcior1859#NovenaMenorCon5aDiminuta
+melcior:NovenaMenorCon5aDiminuta rdf:type owl:NamedIndividual ;
+                                 leximus:esAlteracionDe melcior:NovenaMenor ;
+                                 leximus:ordenEnClasificacion 16 .
+
+
+###  http://leximus.es/source/melcior1859#Parte
+melcior:Parte rdf:type owl:NamedIndividual ;
+              leximus:fuenteEntry "melcior_1859_parte" .
+
+
+###  http://leximus.es/source/melcior1859#Parte_s1
+melcior:Parte_s1 rdf:type owl:NamedIndividual ,
+                          ontolex:LexicalSense ;
+                 rdfs:label "parte: voz o instrumento en la composicion"@es ;
+                 skos:definition "nombre de cada voz o instrumento diferente, cuya reunion forma el concierto composicion o particion"@es ;
+                 ontolex:reference melcior:Parte .
+
+
+###  http://leximus.es/source/melcior1859#Percusion
+melcior:Percusion rdf:type owl:NamedIndividual ,
+                           melcior:FaseDeProcedimiento ;
+                  leximus:precede melcior:Resolucion ;
+                  leximus:ordenEnProcedimiento 2 ;
+                  rdfs:label "percusion"@es ;
+                  skos:definition "acorde donde se encuentra la disonancia"@es .
+
+
+###  http://leximus.es/source/melcior1859#PerfeccionMusical
+melcior:PerfeccionMusical rdf:type owl:NamedIndividual ,
+                                   melcior:CualidadPerceptiva ;
+                          leximus:sinEntradaPropia "true"^^xsd:boolean ;
+                          leximus:causa "la naturaleza o la resonancia de los cuerpos sonoros"@es ;
+                          leximus:polaridad "positiva"@es ;
+                          leximus:nivelEvidencia "TEXTUAL"@es ;
+                          rdfs:comment "Propiedad especifica del acorde consonante (por eso se llama 'perfecto'). A diferencia de 'belleza' (condicion de todo acorde), la perfeccion reside solo en el consonante y tiene causa explicita: la resonancia natural. Melcior no define 'perfeccion musical' como entrada."@es ;
+                          rdfs:label "perfeccion musical"@es .
+
+
+###  http://leximus.es/source/melcior1859#Preparacion
+melcior:Preparacion rdf:type owl:NamedIndividual ,
+                             melcior:FaseDeProcedimiento ;
+                    leximus:precede melcior:Percusion ;
+                    leximus:fuenteEntry "melcior_1859_preparacion" ;
+                    leximus:ordenEnProcedimiento 1 ;
+                    rdfs:comment "Produce ventaja: enlace armonico entre acordes. La 7.a dominante y el diminuto no la necesitan."@es ;
+                    rdfs:label "preparacion"@es ;
+                    skos:definition "disponer acorde consonante para pasar a disonante; el acorde que precede la disonancia"@es .
+
+
+###  http://leximus.es/source/melcior1859#PrimaciaAcordeSobreBajo
+melcior:PrimaciaAcordeSobreBajo rdf:type owl:NamedIndividual ,
+                                         cidoc:E89_Propositional_Object ;
+                                leximus:esAdoptadaPor melcior:Melcior ;
+                                leximus:nivelEvidencia "TEXTUAL"@es ;
+                                cidoc:P67_refers_to melcior:Acorde ,
+                                                    melcior:BajoFundamental ;
+                                rdfs:comment "Melcior (acorde, f38): 'Se ha dicho que la nota del bajo determina la armonia, o el acorde que le corresponde, y esto no es exacto; al contrario decimos que el acorde da a la nota del bajo el caracter que debe tener en la armonia'. F41: un mismo Do en el bajo puede pertenecer a Do mayor, Sol mayor, Fa mayor o La menor; solo el acorde completo determina la escala. Melcior contradice explicitamente la posicion convencional ('se ha dicho... y esto no es exacto'). Consecuencia practica: necesidad del bajo numerado (f42)."@es ;
+                                rdfs:label "el acorde determina el bajo, no al reves"@es .
+
+
+###  http://leximus.es/source/melcior1859#ProgresionArmonica
+melcior:ProgresionArmonica rdf:type owl:NamedIndividual ;
+                           leximus:sujetoARegla melcior:ReglaDeEncadenamiento ;
+                           leximus:tieneComponente melcior:ModeloDeProgresion ;
+                           leximus:fuenteEntry "melcior_1859_progresion_o_marcha_armonica" .
+
+
+###  http://leximus.es/source/melcior1859#Progresion_s1
+melcior:Progresion_s1 rdf:type owl:NamedIndividual ,
+                               ontolex:LexicalSense ;
+                      rdfs:label "progresion: estructura compositiva"@es ;
+                      skos:definition "repeticion simetrica de un modelo en diferentes grados"@es ;
+                      ontolex:reference melcior:ProgresionArmonica .
+
+
+###  http://leximus.es/source/melcior1859#ProhibicionFalsaRelacion
+melcior:ProhibicionFalsaRelacion rdf:type owl:NamedIndividual ;
+                                 leximus:fuenteEntry "melcior_1859_falsa_relacion" .
+
+
+###  http://leximus.es/source/melcior1859#ProhibicionQuintasOctavasSeguidas
+melcior:ProhibicionQuintasOctavasSeguidas rdf:type owl:NamedIndividual ;
+                                          leximus:fuenteEntry "melcior_1859_quinta" .
+
+
+###  http://leximus.es/source/melcior1859#Rameau
+melcior:Rameau rdf:type owl:NamedIndividual ,
+                        prov:Agent ;
+               rdfs:comment "Descubrio que las inversiones son los mismos acordes."@es ;
+               rdfs:label "Jean-Philippe Rameau" .
+
+
+###  http://leximus.es/source/melcior1859#ReglaDeEncadenamiento
+melcior:ReglaDeEncadenamiento rdf:type owl:NamedIndividual .
+
+
+###  http://leximus.es/source/melcior1859#Reicha
+melcior:Reicha rdf:type owl:NamedIndividual ,
+                        prov:Agent ;
+               rdfs:comment "Teorico y compositor; Melcior sigue su clasificacion de acordes disonantes."@es ;
+               rdfs:label "Anton Reicha" .
+
+
+###  http://leximus.es/source/melcior1859#Resolucion
+melcior:Resolucion rdf:type owl:NamedIndividual ,
+                            melcior:FaseDeProcedimiento ;
+                   leximus:fuenteEntry "melcior_1859_resolucion_resolver" ;
+                   leximus:ordenEnProcedimiento 3 ;
+                   rdfs:comment "En 7.a y derivados, la disonancia debe descender. En 6.a aumentada, debe ascender. Todo acorde disonante se resuelve por 5.a inferior o 4.a superior."@es ;
+                   rdfs:label "resolucion"@es ;
+                   skos:definition "paso de disonancia a consonancia en el acorde siguiente"@es .
+
+
+###  http://leximus.es/source/melcior1859#Rousseau
+melcior:Rousseau rdf:type owl:NamedIndividual ,
+                          prov:Agent ;
+                 rdfs:comment "Define disonancia como 'sonido que forma acorde desagradable'. Melcior rechaza esta definicion."@es ;
+                 rdfs:label "Jean-Jacques Rousseau" .
+
+
+###  http://leximus.es/source/melcior1859#Septima2aEspecie
+melcior:Septima2aEspecie rdf:type owl:NamedIndividual ;
+                         leximus:seDerivaDe melcior:SeptimaDominante ;
+                         leximus:necesitaPreparacion "true"^^xsd:boolean ;
+                         leximus:ordenEnClasificacion 3 ;
+                         leximus:seCompone "acorde menor + 7.a menor"@es .
+
+
+###  http://leximus.es/source/melcior1859#Septima3aEspecie
+melcior:Septima3aEspecie rdf:type owl:NamedIndividual ;
+                         leximus:seDerivaDe melcior:SeptimaDominante ;
+                         leximus:necesitaPreparacion "true"^^xsd:boolean ;
+                         leximus:ordenEnClasificacion 4 ;
+                         leximus:seCompone "3.a menor + 5.a diminuta + 7.a menor"@es .
+
+
+###  http://leximus.es/source/melcior1859#Septima4aEspecie
+melcior:Septima4aEspecie rdf:type owl:NamedIndividual ;
+                         leximus:seDerivaDe melcior:SeptimaDominante ;
+                         leximus:necesitaPreparacion "true"^^xsd:boolean ;
+                         leximus:ordenEnClasificacion 5 ;
+                         leximus:seCompone "acorde perfecto mayor + 7.a mayor"@es .
+
+
+###  http://leximus.es/source/melcior1859#Septima4aEspecieCon5aAumentada
+melcior:Septima4aEspecieCon5aAumentada rdf:type owl:NamedIndividual ;
+                                       leximus:esAlteracionDe melcior:Septima4aEspecie ;
+                                       leximus:ordenEnClasificacion 10 .
+
+
+###  http://leximus.es/source/melcior1859#SeptimaDisminuida
+melcior:SeptimaDisminuida rdf:type owl:NamedIndividual ;
+                          leximus:permiteProceso melcior:ModulacionEnarmonicaPorSeptima ;
+                          leximus:seResuelveEn melcior:AcordeConsonante ;
+                          leximus:necesitaPreparacion "false"^^xsd:boolean .
+
+
+###  http://leximus.es/source/melcior1859#SeptimaDominante
+melcior:SeptimaDominante rdf:type owl:NamedIndividual ;
+                         leximus:seResuelveEn melcior:AcordeConsonante ;
+                         leximus:necesitaPreparacion "false"^^xsd:boolean ;
+                         leximus:ordenEnClasificacion 2 ;
+                         leximus:seCompone "3.a mayor + dos 3.as menores"@es .
+
+
+###  http://leximus.es/source/melcior1859#SeptimaDominanteCon5aAumentada
+melcior:SeptimaDominanteCon5aAumentada rdf:type owl:NamedIndividual ;
+                                       leximus:esAlteracionDe melcior:SeptimaDominante ;
+                                       leximus:ordenEnClasificacion 9 .
+
+
+###  http://leximus.es/source/melcior1859#SeptimaDominanteCon5aDiminuta
+melcior:SeptimaDominanteCon5aDiminuta rdf:type owl:NamedIndividual ;
+                                      leximus:esAlteracionDe melcior:SeptimaDominante ;
+                                      leximus:ordenEnClasificacion 14 .
+
+
+###  http://leximus.es/source/melcior1859#Sonido
+melcior:Sonido rdf:type owl:NamedIndividual ;
+               leximus:fuenteEntry "melcior_1859_sonido" .
+
+
+###  http://leximus.es/source/melcior1859#Sonido_s1
+melcior:Sonido_s1 rdf:type owl:NamedIndividual ,
+                           ontolex:LexicalSense ;
+                  rdfs:label "sonido: fenomeno fisico-perceptivo"@es ;
+                  skos:definition "ruido apreciable a nuestros oidos, capaz de producirnos sensaciones agradables"@es ;
+                  ontolex:reference melcior:Sonido .
+
+
+###  http://leximus.es/source/melcior1859#TeoriaCatelAcordes
+melcior:TeoriaCatelAcordes rdf:type owl:NamedIndividual ,
+                                    cidoc:E89_Propositional_Object ;
+                           leximus:esAdoptadaPor melcior:Melcior ;
+                           leximus:esAtribuidaA melcior:Catel ;
+                           leximus:valoracionDelAutor "curiosidad teorica, no util en la practica"@es ;
+                           leximus:nivelEvidencia "TEXTUAL"@es ;
+                           cidoc:P67_refers_to melcior:Acorde ;
+                           rdfs:comment "Melcior transcribe la doctrina de Catel sobre la generacion de los acordes simples a partir de las fracciones del monocordio, pero la califica como 'mas bien por un objeto de curiosidad, que porque sirva en la practica'."@es ;
+                           rdfs:label "teoria de Catel sobre la generacion de los acordes"@es .
+
+
+###  http://leximus.es/source/melcior1859#TesisEsteticaCentral
+melcior:TesisEsteticaCentral rdf:type owl:NamedIndividual ,
+                                      cidoc:E89_Propositional_Object ;
+                             leximus:esAdoptadaPor melcior:Melcior ;
+                             leximus:nivelEvidencia "INFERENCIA"@es ;
+                             cidoc:P67_refers_to melcior:AcordeConsonante ,
+                                                 melcior:AcordeDisonante ;
+                             rdfs:comment "Melcior sostiene que la belleza armonica no reside en la consonancia sola sino en el manejo artistico de la tension consonancia/disonancia. Esto se opone a la posicion de Rousseau (disonancia = desagradable) y se apoya en tres argumentos textuales: (1) la disonancia bien manejada produce bellisimo efecto; (2) musica sin disonancias seria monotona e insulsa; (3) la mezcla es como el claroscuro en la pintura."@es ;
+                             rdfs:label "tesis estetica de Melcior: la belleza armonica como manejo de la tension"@es .
+
+
+###  http://leximus.es/source/melcior1859#Trastrueque_s1
+melcior:Trastrueque_s1 rdf:type owl:NamedIndividual ,
+                                ontolex:LexicalSense ;
+                       ontolex:reference melcior:Inversion .
+
+
+###  http://leximus.es/source/melcior1859#TratamientoDeLaDisonancia
+melcior:TratamientoDeLaDisonancia rdf:type owl:NamedIndividual ;
+                                  leximus:esUnMecanismoDe melcior:EnlaceArmonico .
+
+
+###  http://leximus.es/source/melcior1859#Triada
+melcior:Triada rdf:type owl:NamedIndividual ;
+               leximus:fuenteEntry "melcior_1859_triada" .
+
+
+###  http://leximus.es/source/melcior1859#Unidad
+melcior:Unidad rdf:type owl:NamedIndividual ,
+                        melcior:CualidadPerceptiva ;
+               leximus:opuestoDe melcior:Monotono ;
+               leximus:fuenteEntry "melcior_1859_unidad" ;
+               leximus:polaridad "positiva"@es ;
+               rdfs:comment "Melcior (unidad, f1, f4): 'el canto, los acordes, las modulaciones y los movimientos tengan entre si el mismo caracter, y nazcan de un mismo pensamiento'. Pero 'esta unidad no debe llevarse hasta la monotonia, que en musica es insufrible' (f4). La armonia concurre a establecer la unidad (f16), no la destruye. Rousseau: unidad de la melodia (f15)."@es ;
+               rdfs:label "unidad"@es ;
+               skos:definition "que todas las partes de una composicion esten tan bien enlazadas, que formen un todo completo y coherente"@es .
+
+
+###  http://leximus.es/source/melcior1859#Val_1aInversion_Grato
+melcior:Val_1aInversion_Grato rdf:type owl:NamedIndividual ,
+                                       melcior:ValoracionEstetica ;
+                              leximus:cualidadAtribuida melcior:Encantador ;
+                              leximus:sujetoDeValoracion melcior:AcordeInvertido ;
+                              leximus:patronPredicativo "INHERENTE"@es ;
+                              leximus:nivelEvidencia "TEXTUAL"@es ;
+                              rdfs:comment "Melcior (acorde, frase 26): 'no es facil dar la razon del encanto que tiene esta marcha [...] a lo gratos que son los acordes en su primera inversion'. Encanto inexplicable."@es ;
+                              rdfs:label "acordes en 1.a inversion: encanto y gratos"@es .
+
+
+###  http://leximus.es/source/melcior1859#Val_4aEsp_BuenEfecto_ConResolucion
+melcior:Val_4aEsp_BuenEfecto_ConResolucion rdf:type owl:NamedIndividual ,
+                                                    melcior:ValoracionEstetica ;
+                                           leximus:cualidadAtribuida melcior:Agradable ;
+                                           leximus:sujetoDeValoracion melcior:Septima4aEspecie ;
+                                           leximus:condicion "resolviendolo del modo indicado"@es ;
+                                           leximus:patronPredicativo "CONDICIONAL"@es ;
+                                           leximus:nivelEvidencia "TEXTUAL"@es ;
+                                           rdfs:comment "Melcior: 'pero resolviendolo del modo que hemos dicho produce muy buen efecto en ciertos casos'. El acorde mas aspero se redime por la resolucion. Mismo patron que Val_Disonante_Bellisimo_ConPrep pero especifico de este acorde."@es ;
+                                           rdfs:label "7.a de 4.a especie resuelta: muy buen efecto"@es .
+
+
+###  http://leximus.es/source/melcior1859#Val_4aEsp_MasDisonante
+melcior:Val_4aEsp_MasDisonante rdf:type owl:NamedIndividual ,
+                                        melcior:ValoracionEstetica ;
+                               leximus:cualidadAtribuida melcior:Aspero ;
+                               leximus:sujetoDeValoracion melcior:Septima4aEspecie ;
+                               leximus:patronPredicativo "INHERENTE"@es ;
+                               leximus:nivelEvidencia "TEXTUAL"@es ;
+                               rdfs:comment "Melcior: 'Este acorde es el mas disonante de todos'. Juicio inherente al tipo."@es ;
+                               rdfs:label "7.a de 4.a especie: la mas disonante"@es .
+
+
+###  http://leximus.es/source/melcior1859#Val_7aDim_Dulce
+melcior:Val_7aDim_Dulce rdf:type owl:NamedIndividual ,
+                                 melcior:ValoracionEstetica ;
+                        leximus:cualidadAtribuida melcior:Dulce ;
+                        leximus:sujetoDeValoracion melcior:SeptimaDisminuida ;
+                        leximus:patronPredicativo "INHERENTE"@es ;
+                        leximus:nivelEvidencia "TEXTUAL"@es ;
+                        rdfs:comment "Melcior: 'aunque muy dulce, no deja de ser disonante en razon de la 5.a diminuta'. Dulzura perceptiva coexiste con disonancia estructural."@es ;
+                        rdfs:label "7.a disminuida: muy dulce"@es .
+
+
+###  http://leximus.es/source/melcior1859#Val_7aDom_Dulce
+melcior:Val_7aDom_Dulce rdf:type owl:NamedIndividual ,
+                                 melcior:ValoracionEstetica ;
+                        leximus:cualidadAtribuida melcior:Dulce ;
+                        leximus:sujetoDeValoracion melcior:SeptimaDominante ;
+                        leximus:patronPredicativo "INHERENTE"@es ;
+                        leximus:nivelEvidencia "TEXTUAL"@es ;
+                        rdfs:comment "Melcior: 'el mas dulce y agradable de todos los acordes disonantes, porque, componiendose de notas diatonicas, es el mas natural'. La dulzura se atribuye a la naturalidad (notas diatonicas)."@es ;
+                        rdfs:label "7.a dominante: dulce y agradable"@es .
+
+
+###  http://leximus.es/source/melcior1859#Val_AcordeDuro_Expresivo
+melcior:Val_AcordeDuro_Expresivo rdf:type owl:NamedIndividual ,
+                                          melcior:ValoracionEstetica ;
+                                 leximus:cualidadAtribuida melcior:Agradable ;
+                                 leximus:sujetoDeValoracion melcior:AcordeDisonante ;
+                                 leximus:condicion "manejados bien y usados oportunamente"@es ;
+                                 leximus:patronPredicativo "CONDICIONAL"@es ;
+                                 leximus:nivelEvidencia "TEXTUAL"@es ;
+                                 rdfs:comment "Melcior (duro, f5-f6): 'en la armonia hay acordes duros, como son los de tritono, la 5.a aumentada y, en general, todas las disonancias mayores son expresivas y sentimentales si se manejan bien. Usadas oportunamente producen muy buenos efectos'. Cf. unidad f21: 'anadir la energia de cada pasaje por medio de acordes duros, si la expresion lo requiere'."@es ;
+                                 rdfs:label "acordes duros bien manejados: expresivos y sentimentales"@es .
+
+
+###  http://leximus.es/source/melcior1859#Val_AcordeFalso_Cacofonico
+melcior:Val_AcordeFalso_Cacofonico rdf:type owl:NamedIndividual ,
+                                            melcior:ValoracionEstetica ;
+                                   leximus:cualidadAtribuida melcior:Cacofonico ;
+                                   leximus:sujetoDeValoracion melcior:Acorde ;
+                                   leximus:condicion "reglas de disonancia mal aplicadas"@es ;
+                                   leximus:patronPredicativo "CONDICIONAL"@es ;
+                                   leximus:nivelEvidencia "TEXTUAL"@es ;
+                                   rdfs:comment "Melcior: 'si no sonara bien seria un acorde falso, desagradable, y cacofonico'."@es ;
+                                   rdfs:label "acorde mal empleado: falso, desagradable, cacofonico"@es .
+
+
+###  http://leximus.es/source/melcior1859#Val_Acorde_Belleza
+melcior:Val_Acorde_Belleza rdf:type owl:NamedIndividual ,
+                                    melcior:ValoracionEstetica ;
+                           leximus:cualidadAtribuida melcior:Bello ;
+                           leximus:sujetoDeValoracion melcior:Acorde ;
+                           leximus:patronPredicativo "INHERENTE"@es ;
+                           leximus:nivelEvidencia "TEXTUAL"@es ;
+                           rdfs:comment "Forma parte de la DEFINICION de acorde: 'de los que resulte belleza en su conjunto'. La belleza es condicion necesaria para que una combinacion de sonidos sea acorde."@es ;
+                           rdfs:label "el acorde requiere belleza en su conjunto"@es .
+
+
+###  http://leximus.es/source/melcior1859#Val_Acordes_Unidad
+melcior:Val_Acordes_Unidad rdf:type owl:NamedIndividual ,
+                                    melcior:ValoracionEstetica ;
+                           leximus:cualidadAtribuida melcior:Unidad ;
+                           leximus:sujetoDeValoracion melcior:EnlaceArmonico ;
+                           leximus:patronPredicativo "RELACIONAL"@es ;
+                           leximus:nivelEvidencia "TEXTUAL"@es ;
+                           rdfs:comment "Melcior (unidad, f1): 'todas las partes de una composicion esten tan bien enlazadas, que formen un todo completo y coherente'. F4: 'los acordes, las modulaciones y los movimientos tengan entre si el mismo caracter'. F16: 'la armonia, en vez de destruir la unidad, concurre a establecerla'."@es ;
+                           rdfs:label "acordes enlazados: unidad"@es .
+
+
+###  http://leximus.es/source/melcior1859#Val_Consonancia_Grato
+melcior:Val_Consonancia_Grato rdf:type owl:NamedIndividual ,
+                                       melcior:ValoracionEstetica ;
+                              leximus:cualidadAtribuida melcior:Grato ;
+                              leximus:sujetoDeValoracion melcior:AcordeConsonante ;
+                              leximus:patronPredicativo "INHERENTE"@es ;
+                              leximus:nivelEvidencia "TEXTUAL"@es ;
+                              rdfs:comment "Melcior (entrada consonancia): 'reunion de dos o mas sonidos, cuyo intervalo es grato al oido'. Los intervalos consonantes son 'agradables por si mismos'."@es ;
+                              rdfs:label "consonancia: grato al oido"@es .
+
+
+###  http://leximus.es/source/melcior1859#Val_Disonante_Bellisimo_ConPrep
+melcior:Val_Disonante_Bellisimo_ConPrep rdf:type owl:NamedIndividual ,
+                                                 melcior:ValoracionEstetica ;
+                                        leximus:cualidadAtribuida melcior:Bello ;
+                                        leximus:sujetoDeValoracion melcior:AcordeDisonante ;
+                                        leximus:condicion "usados con las debidas precauciones y con oportunidad"@es ;
+                                        leximus:patronPredicativo "CONDICIONAL"@es ;
+                                        leximus:nivelEvidencia "TEXTUAL"@es ;
+                                        rdfs:comment "Melcior: 'usados con las debidas precauciones y con oportunidad hacen un bellisimo efecto'. Misma entidad, cualidad opuesta, condicion diferente."@es ;
+                                        rdfs:label "disonantes con precauciones: bellisimo efecto"@es .
+
+
+###  http://leximus.es/source/melcior1859#Val_Disonante_Insoportable_SinPrep
+melcior:Val_Disonante_Insoportable_SinPrep rdf:type owl:NamedIndividual ,
+                                                    melcior:ValoracionEstetica ;
+                                           leximus:cualidadAtribuida melcior:Insoportable ;
+                                           leximus:sujetoDeValoracion melcior:AcordeDisonante ;
+                                           leximus:condicion "sin preparacion ni resolucion"@es ;
+                                           leximus:patronPredicativo "CONDICIONAL"@es ;
+                                           leximus:nivelEvidencia "TEXTUAL"@es ;
+                                           rdfs:comment "Melcior: 'si no se preparaban unos, o no se resolvieran todos serian insoportables'."@es ;
+                                           rdfs:label "disonantes sin preparacion: insoportables"@es .
+
+
+###  http://leximus.es/source/melcior1859#Val_EnlaceBueno_Fluidez
+melcior:Val_EnlaceBueno_Fluidez rdf:type owl:NamedIndividual ,
+                                         melcior:ValoracionEstetica ;
+                                leximus:cualidadAtribuida melcior:Fluidez ;
+                                leximus:sujetoDeValoracion melcior:EnlaceArmonico ;
+                                leximus:condicion "ilacion y enlace con marcha natural y facil"@es ;
+                                leximus:patronPredicativo "CONDICIONAL"@es ;
+                                leximus:nivelEvidencia "TEXTUAL"@es ;
+                                rdfs:comment "Melcior (fluidez, f1): 'han de caminar bajo una ilacion y enlace de sonidos y de acordes, y con una marcha natural y facil'. El auditorio 'se siente complacido' cuando se observa (f2)."@es ;
+                                rdfs:label "acordes bien enlazados: fluidez"@es .
+
+
+###  http://leximus.es/source/melcior1859#Val_EnlaceMalo_SinFluidez
+melcior:Val_EnlaceMalo_SinFluidez rdf:type owl:NamedIndividual ,
+                                           melcior:ValoracionEstetica ;
+                                  leximus:cualidadAtribuida melcior:Desagradable ;
+                                  leximus:sujetoDeValoracion melcior:EnlaceArmonico ;
+                                  leximus:condicion "saltos incoherentes y acordes mal enlazados"@es ;
+                                  leximus:patronPredicativo "CONDICIONAL"@es ;
+                                  leximus:nivelEvidencia "TEXTUAL"@es ;
+                                  rdfs:comment "Melcior (fluidez, f2): 'El empleo de saltos incoherentes en la melodia, y de acordes mal enlazados, se oponen a la fluidez'."@es ;
+                                  rdfs:label "acordes mal enlazados: sin fluidez"@es .
+
+
+###  http://leximus.es/source/melcior1859#Val_Inversion_Variedad
+melcior:Val_Inversion_Variedad rdf:type owl:NamedIndividual ,
+                                        melcior:ValoracionEstetica ;
+                               leximus:cualidadAtribuida melcior:Variedad ;
+                               leximus:sujetoDeValoracion melcior:AcordeInvertido ;
+                               leximus:patronPredicativo "INHERENTE"@es ;
+                               leximus:nivelEvidencia "TEXTUAL"@es ;
+                               rdfs:comment "Melcior (acorde, f100): 'Las inversiones de los mismos abren un ancho camino a la variedad musical'. Funcion estetica central de la inversion."@es ;
+                               rdfs:label "inversiones: variedad musical"@es .
+
+
+###  http://leximus.es/source/melcior1859#Val_Mezcla_Brillo
+melcior:Val_Mezcla_Brillo rdf:type owl:NamedIndividual ,
+                                   melcior:ValoracionEstetica ;
+                          leximus:cualidadAtribuida melcior:Brillante ;
+                          leximus:sujetoDeValoracion melcior:AcordeDisonante ;
+                          leximus:condicion "mezclados con acordes consonantes"@es ;
+                          leximus:patronPredicativo "RELACIONAL"@es ;
+                          leximus:nivelEvidencia "TEXTUAL"@es ;
+                          rdfs:comment "Melcior: 'los acordes disonantes se mezclan con los consonantes para dar mas variedad y mas brillo'. Son 'como las sombras en la pintura, que hacen resaltar mas los objetos'."@es ;
+                          rdfs:label "mezcla consonancia/disonancia: brillo y variedad"@es .
+
+
+###  http://leximus.es/source/melcior1859#Val_SeguidoDisonante_PasionesViolentas
+melcior:Val_SeguidoDisonante_PasionesViolentas rdf:type owl:NamedIndividual ,
+                                                        melcior:ValoracionEstetica ;
+                                               leximus:cualidadAtribuida melcior:Aspero ;
+                                               leximus:sujetoDeValoracion melcior:AcordeDisonante ;
+                                               leximus:condicion "seguido de acordes disonantes sin mezcla"@es ;
+                                               leximus:patronPredicativo "RELACIONAL"@es ;
+                                               leximus:nivelEvidencia "TEXTUAL"@es ;
+                                               rdfs:comment "Melcior: 'solo cuando se quieran expresar pasiones violentas pueden ponerse un seguido de acordes disonantes'. La aspereza acumulada sirve para un fin expresivo."@es ;
+                                               rdfs:label "seguido de disonantes: pasiones violentas"@es .
+
+
+###  http://leximus.es/source/melcior1859#Val_SoloConsonancia_Monotona
+melcior:Val_SoloConsonancia_Monotona rdf:type owl:NamedIndividual ,
+                                              melcior:ValoracionEstetica ;
+                                     leximus:cualidadAtribuida melcior:Monotono ;
+                                     leximus:sujetoDeValoracion melcior:AcordeConsonante ;
+                                     leximus:condicion "sin mezcla de acordes disonantes"@es ;
+                                     leximus:patronPredicativo "RELACIONAL"@es ;
+                                     leximus:nivelEvidencia "TEXTUAL"@es ;
+                                     rdfs:comment "Melcior: 'una musica que no se compusiera de acordes disonantes, mezclados con los consonantes, seria monotona e insulsa'. La consonancia sola empobrece."@es ;
+                                     rdfs:label "musica sin disonancias: monotona e insulsa"@es .
+
+
+###  http://leximus.es/source/melcior1859#Val_UnidadExcesiva_Monotonia
+melcior:Val_UnidadExcesiva_Monotonia rdf:type owl:NamedIndividual ,
+                                              melcior:ValoracionEstetica ;
+                                     leximus:cualidadAtribuida melcior:Monotono ;
+                                     leximus:sujetoDeValoracion melcior:EnlaceArmonico ;
+                                     leximus:condicion "unidad llevada al exceso, sin variedad"@es ;
+                                     leximus:patronPredicativo "RELACIONAL"@es ;
+                                     leximus:nivelEvidencia "TEXTUAL"@es ;
+                                     rdfs:comment "Melcior (unidad, f4): 'esta unidad no debe llevarse hasta la monotonia, que en musica es insufrible'. Mismo patron que consonancia sola = monotona."@es ;
+                                     rdfs:label "unidad excesiva: monotonia"@es .
+
+
+###  http://leximus.es/source/melcior1859#Variedad
+melcior:Variedad rdf:type owl:NamedIndividual ,
+                          melcior:CualidadPerceptiva ;
+                 leximus:opuestoDe melcior:Monotono ;
+                 leximus:polaridad "positiva"@es ;
+                 rdfs:label "variedad"@es .
+
+
+###  http://leximus.es/source/melcior1859#Virues
+melcior:Virues rdf:type owl:NamedIndividual ,
+                        prov:Agent ;
+               rdfs:comment "Llama 'raiz armonica' al acorde de 7.a diminuta."@es ;
+               rdfs:label "Jose Joaquin de Virues y Spinola" .
+
+
+#################################################################
+#    Annotations
+#################################################################
+
+melcior:Acorde leximus:nivelEvidencia "TEXTUAL"@es ;
+               rdfs:comment "Requiere minimo dos sonidos (el tercero se sobreentiende por resonancia). Es RESULTADO de que las partes ejecuten notas simultaneas, no un concepto abstracto previo. Se identifica por reduccion a terceras ('subiendo de tercera en tercera no podran equivocarse en su naturaleza', f100), pero este principio es instrumental (criterio de reconocimiento), no constitutivo: la definicion del acorde es perceptiva ('de los que resulte belleza'), no constructiva. Contrasta con MTO/Polifonia, donde la superposicion de terceras es el axioma generativo. Melcior despacha 'triada' como italianismo (ver melcior:Triada). Puede ser arpegiado."@es ;
+               rdfs:label "acorde"@es ;
+               skos:definition "adicion de dos o mas sonidos a otro sonido dado, tocados o cantados simultaneamente, de los que resulte belleza en su conjunto"@es .
+
+
+melcior:Acorde6aAumentada rdfs:comment "Sirve para modular por enharmonismo (se convierte en 7.a dominante)."@es ;
+                          rdfs:label "acorde de 6.a aumentada"@es ;
+                          skos:definition "9.a menor sin fundamental + 5.a bajada en el bajo"@es ;
+                          skos:example "Reb-Fa-Lab-Si"@es .
+
+
+melcior:AcordeCompleto leximus:nivelEvidencia "INFERENCIA"@es ;
+                       rdfs:label "acorde completo"@es ;
+                       skos:definition "acorde que tiene todas las notas que deben entrar en el"@es .
+
+
+melcior:AcordeConsonante leximus:nivelEvidencia "TEXTUAL"@es ;
+                         rdfs:comment "Se llama perfecto porque en el reside la perfeccion musical derivada de la resonancia. Se llama melodico porque solo el constituye el modo. Sin enlace reciproco, no forman sentido (como palabras sin enlace en el discurso)."@es ;
+                         rdfs:label "acorde consonante"@es ;
+                         skos:altLabel "acorde melodico"@es ,
+                                       "acorde perfecto"@es ;
+                         skos:definition "acorde compuesto de nota dada + 3.a mayor o menor + 5.a justa"@es .
+
+
+melcior:AcordeDiminuto leximus:nivelEvidencia "TEXTUAL"@es ;
+                       rdfs:comment "Es parte de la 7.a dominante sin nota fundamental. No necesita preparacion. Se resuelve en acorde perfecto o 7.a dominante (5.a inferior). Cuidar de no confundir con la 7.a dominante sin fundamental."@es ;
+                       rdfs:label "acorde diminuto"@es ;
+                       skos:altLabel "1.er acorde disonante"@es ;
+                       skos:definition "acorde disonante por la 5.a diminuta"@es ;
+                       skos:example "Si-Re-Fa"@es .
+
+
+melcior:AcordeDirecto leximus:nivelEvidencia "TEXTUAL"@es ;
+                      rdfs:comment "Melcior (directo, f6): 'el acorde Do, Mi, Sol, es directo'. Lo opuesto de invertido. 'Directo' es polisemico: se aplica a intervalos (f1-5), a acordes (f6-9) y a movimiento (f10 = sinonimo de semejante)."@es ;
+                      rdfs:label "acorde directo"@es ;
+                      skos:altLabel "acorde en orden directo"@es ;
+                      skos:definition "acorde cuyas partes van de lo grave al agudo sobre un sonido fundamental"@es .
+
+
+melcior:AcordeDisonante rdfs:comment "Se mezclan con consonantes para variedad y brillo. Son como las sombras en la pintura. Un seguido solo se justifica para pasiones violentas. Clasificacion segun Reicha."@es ;
+                        rdfs:label "acorde disonante"@es ;
+                        skos:definition "acorde que tiene una nota a menos de 3.a menor de otra"@es .
+
+
+melcior:AcordeDisonanteAlterado leximus:nivelEvidencia "TEXTUAL"@es ;
+                                rdfs:comment "Regla: en los alterados por sostenidos, la nota alterada debe subir; en los alterados por bemoles, debe bajar."@es ;
+                                rdfs:label "acorde disonante alterado"@es ;
+                                skos:definition "acorde primitivo cuya 5.a ha sido alterada por un semitono"@es .
+
+
+melcior:AcordeDisonantePrimitivo leximus:nivelEvidencia "TEXTUAL"@es ;
+                                 rdfs:comment "Melcior: 'todos los acordes que llamamos primitivos porque las notas que los componen son todas naturales'. Los primitivos pueden ser alterados en su 5.a."@es ;
+                                 rdfs:label "acorde disonante primitivo"@es ;
+                                 skos:definition "acorde disonante cuyas notas son todas naturales"@es .
+
+
+melcior:AcordeImperfecto leximus:nivelEvidencia "TEXTUAL"@es ;
+                         rdfs:comment "No es un tipo por consonancia/disonancia sino una propiedad de completitud. Un acorde perfecto mayor sin la 5.a es un acorde imperfecto. Se opone a acorde completo. Eje ortogonal a la clasificacion de Reicha."@es ;
+                         rdfs:label "acorde imperfecto"@es ;
+                         skos:definition "acorde al que le falta una o mas notas para tener cuantas deben y pueden entrar en el"@es .
+
+
+melcior:AcordeInvertido leximus:nivelEvidencia "TEXTUAL"@es ;
+                        rdfs:comment "La inversion no cambia la naturaleza del acorde, solo su disposicion. Produce variedad en la armonia. Descubierta por Rameau. Los acordes en 1.a inversion son 'gratos' y tienen 'encanto' (ver Val_1aInversion_Grato). Regla: en 2.a inversion, preparar la 4.a."@es ;
+                        rdfs:label "acorde invertido"@es ;
+                        skos:definition "acorde cuyas notas se colocan en distinta situacion, con la fundamental fuera del bajo"@es .
+
+
+melcior:AcordePerfectoMayor rdfs:label "acorde perfecto mayor"@es ;
+                            skos:definition "acorde consonante con tercera mayor sobre la fundamental"@es ;
+                            skos:example "Do-Mi-Sol"@es .
+
+
+melcior:AcordePerfectoMenor rdfs:label "acorde perfecto menor"@es ;
+                            skos:definition "acorde consonante con tercera menor sobre la fundamental"@es ;
+                            skos:example "Re-Fa-La"@es .
+
+
+melcior:ArmoniaAscendiente leximus:nivelEvidencia "TEXTUAL"@es ;
+                           rdfs:comment "Melcior: 'la armonia ascendiente es la que procede por quintas subiendo'. Va anadiendo un sostenido a cada acorde. La 7.a dominante sirve de conductora del tono. Aqui 'armonia' no significa disciplina sino flujo/progresion armonica concreta."@es ;
+                           rdfs:label "armonia ascendiente"@es ;
+                           skos:definition "progresion armonica que procede por quintas subiendo"@es .
+
+
+melcior:ArmoniaDescendiente leximus:nivelEvidencia "TEXTUAL"@es ;
+                            rdfs:comment "Procede por bemoles. Permite hacer un circulo armonico completo."@es ;
+                            rdfs:label "armonia descendiente"@es ;
+                            skos:definition "progresion armonica que procede por quintas bajando"@es .
+
+
+melcior:BajoFundamental leximus:nivelEvidencia "TEXTUAL"@es ;
+                        rdfs:comment "Melcior (bajo fundamental, f1-19): concepto de Rameau. Antes de el, 'los compositores iban a tientas'. Rameau descubrio que las inversiones reducen los acordes a un corto numero de fundamentales (f6). El bajo fundamental tiene 'marcha propia deducida del enlace mas natural de los acordes' (f14): por 4.a inf, 5.a inf, 3.a inf (f15). La marcha por 2.as es excepcion (f17). F13: 'en la inversion, el bajo fundamental existira sobreentendido en el bajo, aun cuando se encuentre en las partes altas'. Hoy (1859) se considera insuficiente para explicar todos los acordes, pero sin el 'la ciencia armonica estaria todavia en mantillas' (f10)."@es ;
+                        rdfs:label "bajo fundamental"@es ;
+                        skos:definition "aquel que solo se forma de sonidos fundamentales de la armonia, debajo de cada acorde se deja oir el verdadero sonido fundamental"@es .
+
+
+melcior:Cadencia leximus:nivelEvidencia "TEXTUAL"@es ;
+                 rdfs:comment "Polisemica: cadencia melodica (reposo en tonica), cadencia armonica (reposo entre acordes), cadencia vocal (= trino, sentido antiguo, f24-26). Para el modelo de acorde importan las armonicas."@es ;
+                 rdfs:label "cadencia"@es ;
+                 skos:definition "terminacion de una frase armonica o melodica sobre un reposo musical"@es .
+
+
+melcior:EnlaceArmonico leximus:nivelEvidencia "TEXTUAL"@es ;
+                       rdfs:comment "Concepto amplio: el encadenamiento de acordes segun reglas que produce coherencia armonica. El tratamiento de la disonancia es solo UNO de los mecanismos que produce enlace. Las voces se enlazan bien cuando sonidos del acorde sirven para el siguiente."@es ;
+                       rdfs:label "enlace armonico"@es ;
+                       skos:altLabel "encadenamiento"@es ,
+                                     "encadenamiento de acordes"@es ;
+                       skos:definition "necesidad absoluta entre acordes; buen enlace produce progresion armonica"@es .
+
+
+melcior:Inversion leximus:nivelEvidencia "TEXTUAL"@es ;
+                  rdfs:comment "Polisemica: aplicada a un intervalo, lo transforma (3.a mayor -> 6.a menor); aplicada a un acorde, cambia la disposicion pero no la naturaleza. Melcior las define juntas en la misma entrada, pero son operaciones distintas. Subclases: InversionDeIntervalo, InversionDeAcorde."@es ;
+                  rdfs:label "inversion"@es ;
+                  skos:altLabel "trastocar"@es ,
+                                "trastrueque"@es ;
+                  skos:definition "operacion de colocar las notas de un intervalo o acorde en distinta situacion del orden directo"@es .
+
+
+melcior:Ligadura leximus:nivelEvidencia "TEXTUAL"@es ;
+                 rdfs:comment "Melcior (ligadura, f4-7): hay ligaduras armonicas y melodicas. En armonia, 'las notas fundamentales que acompanan a un acorde sirven para el acorde siguiente'. A estas ligaduras 'se las llama mas propiamente prolongaciones' (f6). Conecta con retardo y suspension (f7). Los antiguos la llamaron 'prision' o 'sinalefa' (f8)."@es ;
+                 rdfs:label "ligadura"@es ;
+                 skos:altLabel "prolongacion"@es ;
+                 skos:definition "cuando algunos sonidos de un acorde sirven tambien para el que le sigue"@es .
+
+
+melcior:MayorCon5aAumentada rdfs:label "acorde mayor con 5.a aumentada"@es ;
+                            skos:example "Sol-Si-Re#"@es .
+
+
+melcior:MayorCon5aDiminuta rdfs:label "acorde mayor con 5.a diminuta"@es ;
+                           skos:example "Sol-Si-Reb"@es .
+
+
+melcior:ModeloDeProgresion leximus:nivelEvidencia "TEXTUAL"@es ;
+                           rdfs:comment "Puede formarse de un solo compas o de una o mas notas. Si principia por acorde disonante, debe ser de 7.a dominante, 7.a disminuida o 6.a aumentada. Debe finalizar siempre en acorde consonante."@es ;
+                           rdfs:label "modelo (diseno primero)"@es ;
+                           skos:altLabel "diseno"@es ;
+                           skos:definition "primera frase de una progresion armonica, que las demas imitan"@es .
+
+
+melcior:MovimientoArmonico leximus:nivelEvidencia "TEXTUAL"@es ;
+                           rdfs:comment "Melcior usa indistintamente: 'las fundamentales han de caminar del modo siguiente', 'la marcha del bajo fundamental', 'proceder por grado conjunto', 'el bajo puede mover por 5.a'. Todos refieren al movimiento de las partes."@es ,
+                                        "No confundir con movimiento (tempo). Aqui: como se mueven las voces/partes, no la velocidad. Melcior usa sinonimos discursivos: marchar, caminar, mover, proceder."@es ;
+                           rdfs:label "movimiento armonico"@es ;
+                           skos:altLabel "caminar"@es ,
+                                         "marcha de las partes"@es ,
+                                         "marchar"@es ,
+                                         "mover"@es ,
+                                         "proceder"@es ;
+                           skos:definition "direccion en que se mueven las partes de una composicion al pasar de un acorde a otro"@es .
+
+
+melcior:Nota leximus:nivelEvidencia "TEXTUAL"@es ;
+             rdfs:comment "Polisemica en Melcior: (s1) signo grafico, (s2) saber de musica, (s3) sinonimo de sonido. Aqui se modela la acepcion s1/s3: la nota como entidad informacional ejecutada por una parte."@es ,
+                          "Sinonimia parcial: Nota acepcion s3 = Sonido. Formalizado en Parte 12 via ontolex:reference compartido."@es ;
+             rdfs:label "nota"@es ;
+             skos:definition "signo que representa un sonido en la escritura musical"@es ;
+             skos:related melcior:Sonido .
+
+
+melcior:NotaExtranaAlAcorde leximus:nivelEvidencia "TEXTUAL"@es ;
+                            rdfs:comment "Melcior (armonia, f64-67): 'Hay en la armonia notas que son extranas a los acordes y sobre los cuales no hacen mas que deslizarse'. Dos tipos segun posicion metrica: (1) en tiempo debil: notas de paso y apoyaturas, que 'rodean a otras notas parte integrante de los acordes, haciendo una especie de adorno melodico' (f65); (2) en tiempo fuerte: suspensiones, que 'suspenden la nota integrante de un acorde durante cierto tiempo del compas para hacerla oir en seguida' (f67). Subtipos no desplegados aqui: nota de paso, apoyatura, bordadura, mordente, trino, suspension, retardo, anticipacion, pedal (cada uno con entrada propia en Melcior). El detalle pertenece al entorno conceptual de la ornamentacion, no del acorde."@es ;
+                            rdfs:label "nota extrana al acorde"@es ;
+                            skos:definition "notas que no forman parte del acorde pero se definen en relacion a el"@es .
+
+
+melcior:NovenaMayor leximus:nivelEvidencia "TEXTUAL"@es ;
+                    rdfs:comment "Se coloca en la dominante de un tono mayor. Se emplea casi siempre sin fundamental. La 9.a debe estar al menos a distancia de 9.a de la fundamental. 4.a inversion inadmisible."@es ;
+                    rdfs:label "novena mayor"@es ;
+                    skos:altLabel "6.o acorde disonante"@es ;
+                    skos:definition "7.a dominante con 9.a mayor"@es ;
+                    skos:example "Sol-Si-Re-Fa-La"@es .
+
+
+melcior:NovenaMayorCon5aAumentada rdfs:label "9.a mayor con 5.a aumentada"@es .
+
+
+melcior:NovenaMayorCon5aDiminuta rdfs:label "9.a mayor con 5.a diminuta"@es .
+
+
+melcior:NovenaMenor leximus:nivelEvidencia "TEXTUAL"@es ;
+                    rdfs:comment "Se emplea casi siempre sin fundamental; en ese caso queda como septima disminuida. Sigue todas las leyes de la septima disminuida cuando se usa sin fundamental."@es ;
+                    rdfs:label "novena menor"@es ;
+                    skos:altLabel "7.o acorde disonante"@es ;
+                    skos:definition "7.a dominante con 9.a menor"@es ;
+                    skos:example "Sol-Si-Re-Fa-Lab"@es .
+
+
+melcior:NovenaMenorCon5aAumentada rdfs:comment "Poco uso, por el intervalo inarmonico Si#-Fa."@es ;
+                                  rdfs:label "9.a menor con 5.a aumentada"@es .
+
+
+melcior:NovenaMenorCon5aDiminuta rdfs:label "9.a menor con 5.a diminuta"@es .
+
+
+melcior:Parte leximus:nivelEvidencia "TEXTUAL"@es ;
+              rdfs:comment "La parte es el agente operativo del sistema armonico de Melcior: ejecuta notas, se mueve segun reglas, y produce el enlace de acordes. La reunion de todas las partes escritas una encima de otra es lo que se llama particion. Melcior reserva 'voz' para la voz humana; 'parte' cubre voz e instrumento."@es ;
+              rdfs:label "parte"@es ;
+              skos:definition "nombre de cada voz o instrumento diferente, cuya reunion forma el concierto composicion o particion"@es .
+
+
+melcior:ProgresionArmonica leximus:nivelEvidencia "TEXTUAL"@es ;
+                           rdfs:comment "Estructura compositiva formada por un modelo (diseno primero) y sus imitaciones (segundo diseno, tercer diseno, etc.). El modelo debe proceder con regularidad y con enlace. Se reproduce por intervalos de 2.as, 3.as o 4.as superiores o inferiores. Puede ser armonica o melodica. Sinonimia: 'progresion' = 'marcha armonica' (entrada propia: PROGRESION O MARCHA ARMONICA). 'Marcha' en sentido s2 (no pieza militar)."@es ;
+                           rdfs:label "progresion armonica"@es ;
+                           skos:altLabel "marcha armonica"@es ;
+                           skos:definition "repeticion simetrica en diferentes grados, subiendo o bajando, de una frase compuesta de algunos acordes"@es .
+
+
+melcior:ProhibicionFalsaRelacion leximus:nivelEvidencia "TEXTUAL"@es ;
+                                 rdfs:comment "Melcior (falsa relacion, f1-f4): 'Se comete este defecto cuando se cambian cromaticamente una o mas notas, y que este cambio no se verifica en la misma parte'. Prohibida sobre todo en las voces (f2). Tolerada cuando los acordes estan separados por silencios largos (f4). Los italianos distinguen relacion monodica y corodica (f5)."@es ;
+                                 rdfs:label "prohibicion de falsa relacion"@es ;
+                                 skos:definition "no cambiar cromaticamente una nota en una parte distinta de aquella en que aparece la nota natural"@es .
+
+
+melcior:ProhibicionQuintasOctavasSeguidas leximus:nivelEvidencia "TEXTUAL"@es ;
+                                          rdfs:comment "Melcior (quinta, f8): 'Dos quintas justas y dos octavas seguidas deben evitarse aun cuando marchen por movimiento contrario; pero si son de diferente naturaleza son toleradas'. F17: 'estrictamente hablando, no se deben prohibir sino dos [quintas] manifiestas que marchan por movimiento semejante; todas las demas son mas o menos permitidas'. F18: 'Cuando un acorde cambia de posicion sin cambiar de naturaleza, se pueden dar', es decir que entre inversiones del mismo acorde se tolera. Octava (f5): la razon es que 'crea duda sobre el tono y el modo'. Licencia (f8): 'todas las veces que se pueden dar dos quintas seguidas sin hacer sentir dos modos a la vez, se toma una licencia, pero no hay falta'."@es ;
+                                          rdfs:label "prohibicion de quintas y octavas seguidas"@es ;
+                                          skos:definition "dos quintas justas y dos octavas seguidas deben evitarse, sobre todo por movimiento semejante"@es .
+
+
+melcior:ReglaDeEncadenamiento leximus:nivelEvidencia "TEXTUAL"@es ;
+                              rdfs:comment "Melcior usa la expresion 'regla de encadenamiento'. Excepciones: por 2.a (grados 1<>2, 4<>5, 6<>5). Marcha de 6.as: sucesion de 1.as inversiones por 2.a."@es ;
+                              rdfs:label "regla de encadenamiento"@es ;
+                              skos:altLabel "regla de enlace"@es ;
+                              skos:definition "regla que prescribe como encadenar acordes consonantes: por 3.a inf., 4.a inf. o 5.a inf."@es .
+
+
+melcior:Septima2aEspecie leximus:nivelEvidencia "TEXTUAL"@es ;
+                         rdfs:comment "Se emplea en el 2.o, 3.o y 6.o grado de una escala mayor. Se resuelve en acorde perfecto o 7.a dominante de su 5.a inferior. Necesita preparacion."@es ;
+                         rdfs:label "septima de 2.a especie"@es ;
+                         skos:altLabel "3.er acorde disonante"@es ;
+                         skos:definition "acorde menor con 7.a menor"@es ;
+                         skos:example "Re-Fa-La-Do"@es .
+
+
+melcior:Septima3aEspecie leximus:nivelEvidencia "TEXTUAL"@es ;
+                         rdfs:comment "Se emplea en el 2.o grado de una escala menor. Sigue las mismas reglas que la 7.a de 2.a especie. La menos armonica."@es ;
+                         rdfs:label "septima de 3.a especie"@es ;
+                         skos:altLabel "4.o acorde disonante"@es ;
+                         skos:definition "acorde disminuido con 7.a menor"@es ;
+                         skos:example "Si-Re-Fa-La"@es .
+
+
+melcior:Septima4aEspecie leximus:nivelEvidencia "TEXTUAL"@es ;
+                         rdfs:comment "Es el mas disonante de todos. Se emplea en el 6.o grado menor o 4.o grado mayor. Necesita preparar la 7.a."@es ;
+                         rdfs:label "septima de 4.a especie"@es ;
+                         skos:altLabel "5.o acorde disonante"@es ;
+                         skos:definition "acorde mayor con 7.a mayor"@es ;
+                         skos:example "Do-Mi-Sol-Si"@es .
+
+
+melcior:Septima4aEspecieCon5aAumentada rdfs:label "7.a de 4.a especie con 5.a aumentada"@es .
+
+
+melcior:SeptimaDisminuida leximus:nivelEvidencia "TEXTUAL"@es ;
+                          rdfs:comment "Aunque muy dulce, es disonante por la 5.a diminuta. Permite modulacion enarmonica: cada nota puede ser fundamental, produciendo 4 acordes precursores de modo menor. Mina de efectos sorprendentes. Virues la llama 'raiz armonica'."@es ;
+                          rdfs:label "septima disminuida"@es ;
+                          skos:altLabel "raiz armonica"@es ;
+                          skos:definition "acorde de tres terceras menores"@es ;
+                          skos:example "Sol#-Si-Re-Fa"@es .
+
+
+melcior:SeptimaDominante leximus:nivelEvidencia "TEXTUAL"@es ;
+                         rdfs:comment "El mas importante y mas grato de todos los disonantes despues del diminuto. Se resuelve siempre en acorde perfecto. Puede no prepararse. Todas las demas disonancias derivan de esta."@es ;
+                         rdfs:label "septima dominante"@es ;
+                         skos:altLabel "2.o acorde disonante"@es ,
+                                       "7.a de 1.a especie"@es ;
+                         skos:definition "acorde mayor con 7.a menor"@es ;
+                         skos:example "Sol-Si-Re-Fa"@es .
+
+
+melcior:SeptimaDominanteCon5aAumentada rdfs:label "7.a dominante con 5.a aumentada"@es ;
+                                       skos:example "Sol-Si-Re#-Fa"@es .
+
+
+melcior:SeptimaDominanteCon5aDiminuta rdfs:label "7.a dominante con 5.a diminuta"@es ;
+                                      skos:example "Sol-Si-Reb-Fa"@es .
+
+
+melcior:Sonido leximus:nivelEvidencia "TEXTUAL"@es ;
+               rdfs:comment "Elemento primitivo de la musica (entrada elementos, f2). Tiene tres cualidades: tono/entonacion, fuerza/intensidad, timbre (entrada sonido, f5). Sinonimo de nota en acepcion s3. En la cadena causal, Nota y Sonido son la misma entidad desde perspectivas distintas (grafica vs acustica)."@es ;
+               rdfs:label "sonido"@es ;
+               skos:definition "ruido apreciable a nuestros oidos, capaz de producirnos sensaciones agradables"@es .
+
+
+melcior:TratamientoDeLaDisonancia rdfs:comment "Es un mecanismo especifico que produce enlace armonico. Consta de tres fases ordenadas."@es ;
+                                  rdfs:label "tratamiento de la disonancia"@es ;
+                                  skos:definition "procedimiento prescriptivo para manejar acordes disonantes: preparacion, percusion y resolucion"@es .
+
+
+melcior:Triada rdfs:comment "Melcior: 'Con esta palabra expresan los italianos las combinaciones armonicas de tres sonidos'. No es subclase de Acorde sino equivalente lexico parcial del acorde consonante."@es ;
+               rdfs:label "triada"@es ;
+               skos:definition "combinacion armonica de tres sonidos (termino italiano)"@es .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
