@@ -1,0 +1,29 @@
+cff-version: 1.2.0
+message: "If you use this dataset, please cite it as below."
+type: dataset
+authors:
+  - family-names: Cascudo García-Villaraco
+    given-names: Teresa
+    orcid: "https://orcid.org/[your-orcid]"
+    affiliation: "Universidad de La Rioja"
+title: "LexiMus-UR: Melcior 1859 chord ontology model"
+version: 1.0.0
+date-released: "2026"
+doi: "10.5281/zenodo.[to be assigned]"
+repository-code: "https://github.com/LeximusUR/melcior1859"
+license: CC-BY-4.0
+keywords:
+  - music ontology
+  - historical music dictionary
+  - propositional analysis
+  - CIDOC-CRM
+  - knowledge representation
+  - Melcior 1859
+  - Spanish music lexicography
+abstract: >
+  Formal ontology model of the chord entry in Carlos José Melcior's
+  Diccionario enciclopédico de la música (Lérida, 1859), developed
+  through propositional analysis anchored in CIDOC-CRM. The model
+  comprises 1,328 triples, 71 classes, and 37 properties covering
+  normative, evaluative, perceptual, and epistemic content absent
+  from current music ontologies.
