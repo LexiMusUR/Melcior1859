@@ -8,13 +8,11 @@ authors:
     affiliation: "Universidad de La Rioja / SCRIUR"
   - family-names: de las Casas Escolar
     given-names: Arturo
-    orcid: "https://orcid.org/[your-orcid]"
     affiliation: "Universidad de La Rioja / SCRIUR"
 title: "LexiMus-UR: Melcior 1859 chord ontology model"
 version: 1.0.0
-date-released: "2026"
-doi: "10.5281/zenodo.[to be assigned]"
-repository-code: "https://github.com/LeximusUR/melcior1859"
+date-released: "2026-03-31"
+repository-code: "https://github.com/LexiMusUR/Melcior1859"
 license: CC-BY-4.0
 keywords:
   - music ontology
