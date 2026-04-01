@@ -50,11 +50,11 @@ Corpus: LexiMus-UR (Universidad de La Rioja). Full corpus: Fargas 1852, Melcior 
 
 If you use this dataset, please cite:
 
-> Cascudo García-Villaraco, T. (2026). *LexiMus-UR: Melcior 1859 chord ontology model* (v1.0) [Dataset]. Zenodo. https://doi.org/10.5281/zenodo.[to be assigned]
+> LexiMus (2026). *LexiMus-UR: Melcior 1859 chord ontology model* (v1.0) [Dataset]. Zenodo. https://doi.org/10.5281/zenodo.[to be assigned]
 
 And the associated article:
 
-> Cascudo García-Villaraco, T. (2026). What counts as ontological? Historical music definitions and the epistemological limits of current knowledge representation. *Journal of New Music Research*.
+> 
 
 ---
 
