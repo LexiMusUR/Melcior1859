@@ -16,9 +16,7 @@
 <http://leximus.es/source/melcior1859/acorde-v3> rdf:type owl:Ontology ;
                                                   rdfs:comment "Reconstruccion ontologica del concepto de acorde y su entorno conceptual a partir del Diccionario enciclopedico de la musica (Melcior, 1859). v3 amplia el modelo con clases emergentes del analisis proposicional."@es ;
                                                   rdfs:label "Modelo de ACORDE — Melcior 1859 (v3)"@es ;
-                                                  dcterms:creator "Teresa Cascudo Garcia-Villaraco (Universidad de La Rioja / SCRIUR)" ;
-                                                  dcterms:creator "David Ferreiro Carballo (Universidad Autónoma de Madrid)" ;
-                                                  dcterms:creator "Arturo de las Casas Escolar (Universidad de La Rioja / SCRIUR)" ;
+                                                  dcterms:creator 
                                                   dcterms:rights "CC BY 4.0 — https://creativecommons.org/licenses/by/4.0/" ;
                                                   dcterms:isPartOf "Proyecto LexiMus PID2022-139589NB-C32, MCIN/AEI/10.13039/501100011033/FEDER, UE" ;
                                                   prov:wasDerivedFrom "Melcior, C. J. (1859). Diccionario enciclopedico de la musica"@es ;
